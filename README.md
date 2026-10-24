@@ -8,11 +8,11 @@
 
 ## Nguồn âm thanh và PDF
 
-Repo này **không chứa** tệp nghe hay PDF của khoá học. Trên web, app phát tệp trực tiếp từ thư mục Google Drive được chia sẻ (`data/ids.json` lưu ID của từng tệp). Nếu mở `index.html` từ thư mục `F:\Effortless English` trên máy tính, app dùng tệp đã tải về. Trên điện thoại, bấm "Chọn thư mục Effortless English trên máy này" để app phát thẳng tệp đã chép vào điện thoại, không cần mạng.
+Repo này **không chứa** tệp nghe hay PDF của khoá học. App phát tệp từ thư mục Effortless English trên máy, hoặc từ kho tài liệu riêng khi đặt `window.EFF_BASE` (đường dẫn gốc của kho). Nếu mở `index.html` từ thư mục `F:\Effortless English` trên máy tính, app dùng tệp đã tải về. Trên điện thoại, bấm "Chọn thư mục Effortless English trên máy này" để app phát thẳng tệp đã chép vào điện thoại, không cần mạng.
 
 ## Cấu trúc
 
 - `index.html`: app hoàn chỉnh (bản GitHub Pages).
 - `src/template.html`: mã nguồn app, chưa có dữ liệu.
-- `data/lib.json`: danh sách khoá, bài, tệp nghe và PDF. `data/ids.json`: ID Google Drive của từng tệp.
+- `data/lib.json`: danh sách khoá, bài, tệp nghe và PDF.
 - `tools/`: script tạo `lib.json` từ danh sách thư mục và gắn dữ liệu vào template.

@@ -717,9 +717,10 @@ html[data-lang="en"] .bub .vi,html[data-lang="en"] .ans em,html[data-lang="en"] 
   const EMBED=!LOCAL&&window.EFF_EMBED===true;
   const previewUrl=p=>{const v=IDS[p];if(!v)return null;const [id,q]=v.split('?');return 'https://drive.google.com/file/d/'+id+'/preview'+(q?'?'+q:'')};
   const PICK=new Map(), BLOB=new Map();
-  const srcUrl=p=>{if(LOCAL) return localUrl(p); const f=PICK.get(p); if(!f) return null; if(!BLOB.has(p)) BLOB.set(p,URL.createObjectURL(f)); return BLOB.get(p)};
+  const BASE=(window.EFF_BASE||'').replace(/\/?$/,'/').replace(/^\/$/,'');
+  const srcUrl=p=>{if(LOCAL) return localUrl(p); if(BASE&&!PICK.has(p)) return BASE+localUrl(p); const f=PICK.get(p); if(!f) return null; if(!BLOB.has(p)) BLOB.set(p,URL.createObjectURL(f)); return BLOB.get(p)};
   const folderUrl=IDS['']?'https://drive.google.com/drive/folders/'+IDS['']:null;
-  const setBadge=()=>{document.getElementById('modeBadge').textContent=PICK.size?T('Using ','Đang dùng ')+PICK.size+T(' files on this device',' tệp trên máy này'):LOCAL?T('Using files on this computer','Đang dùng tệp trên máy tính'):EMBED?T('Playing from Google Drive','Phát từ Google Drive'):T('Using Google Drive links','Đang dùng link Google Drive')};
+  const setBadge=()=>{document.getElementById('modeBadge').textContent=PICK.size?T('Using ','Đang dùng ')+PICK.size+T(' files on this device',' tệp trên máy này'):LOCAL?T('Using files on this computer','Đang dùng tệp trên máy tính'):BASE?T('Playing from your library','Phát từ kho tài liệu của bạn'):T('No course files on this device yet','Chưa có tệp khoá học trên máy này')};
   setBadge();
   let B={c:0,l:0,seen:{}};
   try{const s=JSON.parse(localStorage.getItem('mb-book')||'null'); if(s) B=Object.assign(B,s)}catch(e){}
@@ -755,15 +756,15 @@ html[data-lang="en"] .bub .vi,html[data-lang="en"] .ans em,html[data-lang="en"] 
     document.getElementById('tocsel').innerHTML=C.lessons.map((L,i)=>`<option value="${i}" ${i===B.l?'selected':''}>${no(L,i)} · ${esc(L.title)}</option>`).join('');
     const cur=document.querySelector('#toc [aria-current="true"]'); if(cur) cur.scrollIntoView({block:'nearest'});
   }
-  function fileLink(p){ return LOCAL?localUrl(p):(PICK.has(p)?srcUrl(p):driveUrl(p)) }
+  function fileLink(p){ return (LOCAL||BASE||PICK.has(p))?srcUrl(p):null }
   function drawPage(){
     const C=LIB[B.c], L=C&&C.lessons[B.l], pg=document.getElementById('page');
     const sel=document.getElementById('tocsel');
     [...pg.children].forEach(ch=>{if(ch!==sel) ch.remove()});
     if(!L){pg.insertAdjacentHTML('beforeend','<p class="note">Chưa có dữ liệu cho mục này.</p>');return}
     B.seen[C.id+':'+B.l]=1; saveB();
-    const NAT=LOCAL||(PICK.size>0&&[...L.audio,...(L.video||[])].some(a=>PICK.has(a[1])));
-    const tracks=[...L.audio.map(a=>({n:a[0],p:a[1],t:'a'})),...(L.video||[]).map(a=>({n:a[0],p:a[1],t:'v'}))].filter(t=>NAT?(LOCAL||PICK.has(t.p)):IDS[t.p]);
+    const NAT=LOCAL||!!BASE||(PICK.size>0&&[...L.audio,...(L.video||[])].some(a=>PICK.has(a[1])));
+    const tracks=[...L.audio.map(a=>({n:a[0],p:a[1],t:'a'})),...(L.video||[]).map(a=>({n:a[0],p:a[1],t:'v'}))].filter(t=>NAT?(LOCAL||BASE||PICK.has(t.p)):true);
     const label=C.id==='method'?T('Part','Phần'):C.id==='pron'?'Unit':T('Lesson','Bài');
     let h=`<div class="pagehead"><div><div class="eyebrow">${esc(C.name)} · ${label} ${B.l+1} / ${C.lessons.length}</div><h3>${esc(L.title)}</h3></div>
       <div class="pager"><button type="button" id="pgPrev" aria-label="Trang trước" ${B.l===0?'disabled':''}>‹</button><button type="button" id="pgNext" aria-label="Trang sau" ${B.l===C.lessons.length-1?'disabled':''}>›</button></div></div>`;
@@ -777,7 +778,7 @@ html[data-lang="en"] .bub .vi,html[data-lang="en"] .ans em,html[data-lang="en"] 
       h+=`<div class="tracks">${tracks.map((t,i)=>{const u=fileLink(t.p);const kd=t.t==='v'?'Video':kindOf(t.n);
         return (NAT||EMBED)?`<button class="track" type="button" data-track="${i}"><span class="pb">${PLAYTRI}</span><span class="nm">${esc(t.n)}</span>${kd?`<span class="kd">${kd}</span>`:'<span></span>'}</button>`
           :u?`<a class="track" href="${u}" target="_blank" rel="noopener"><span class="pb">${PLAYTRI}</span><span class="nm">${esc(t.n)}</span>${kd?`<span class="kd">${kd}</span>`:'<span></span>'}</a>`
-          :`<div class="track" aria-disabled="true" style="opacity:.55"><span class="pb">${PLAYTRI}</span><span class="nm">${esc(t.n)}</span><span class="kd">${T('no link yet','chưa có link')}</span></div>`}).join('')}</div>`;
+          :`<div class="track" aria-disabled="true" style="opacity:.55"><span class="pb">${PLAYTRI}</span><span class="nm">${esc(t.n)}</span><span class="kd">${T('no file yet','chưa có tệp')}</span></div>`}).join('')}</div>`;
       if(NAT){
       h+=`<div class="player" id="player"><span class="now" id="nowName">${T('Pick a track above','Chọn một bài nghe ở trên')}</span><audio id="aud" controls preload="none"></audio>
         <video id="vid" controls preload="none" style="width:100%;border-radius:12px;display:none"></video>
@@ -786,7 +787,7 @@ html[data-lang="en"] .bub .vi,html[data-lang="en"] .ans em,html[data-lang="en"] 
       if(EMBED&&!NAT){
       h+=`<div class="player" id="player"><span class="now" id="nowName">${T('Pick a track above','Chọn một bài nghe ở trên')}</span><iframe id="dplay" title="Trình phát" allow="autoplay" style="width:100%;height:0;border:0;border-radius:12px;background:#fff"></iframe><div class="row"><button type="button" id="nextTrack">Bài tiếp ›</button><a id="openDrive" style="color:#fff;font-size:13.5px" target="_blank" rel="noopener" hidden>Mở trong Drive ↗</a></div></div>`;
       }
-      if(!NAT&&!EMBED) h+=`<p class="note">${T('Tap a track to open it in Google Drive and listen right away.','Bấm một bài nghe để mở trong Google Drive và nghe ngay. Trên điện thoại, Drive mở trong trình duyệt hoặc ứng dụng Google Drive.')}</p>`;
+      if(!NAT&&!EMBED) h+=`<p class="note">${T('The course files are not on this device yet. Choose the Effortless English folder to listen and read right here in the app.','Tài liệu khoá học chưa có trên máy này. Hãy chọn thư mục Effortless English để nghe và đọc ngay trong app.')} <label for="pickDir" style="text-decoration:underline;cursor:pointer;font-weight:600">${T('Choose folder','Chọn thư mục')}</label></p>`;
     }
     if(L.pdf.length){
       if(NAT) h+=`<iframe class="pdfview" id="pdfview" title="Bài đọc" src="${srcUrl(L.pdf[0][1])}"></iframe>`;
