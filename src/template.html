@@ -54,6 +54,17 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 .navpill{left:calc(443*var(--u));top:calc(13*var(--u));width:calc(546*var(--u));height:calc(50*var(--u));border-radius:calc(25*var(--u));background:var(--sage-pill);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:flex;align-items:center;gap:calc(54*var(--u));padding-left:calc(49*var(--u))}
 .navpill a{color:#fff;text-decoration:none;font:500 calc(19.5*var(--u))/1 var(--body);white-space:nowrap;transition:opacity .2s}
 .navpill a:hover{opacity:.8}
+.langsw{left:calc(1112*var(--u));top:calc(17*var(--u));height:calc(40*var(--u));display:flex;gap:calc(2*var(--u));padding:calc(3*var(--u));border-radius:999px;background:var(--sage-pill);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.langsw button{padding:0 calc(12*var(--u));border-radius:999px;color:#fff;font:600 calc(14*var(--u))/1 var(--body)}
+.langsw button[aria-pressed="true"]{background:#fff;color:var(--leaf)}
+.t2{display:block;font-size:.8em;opacity:.78;font-weight:inherit}
+.t2.in{display:inline;font-size:1em}
+.navpill .t2,.pill .t2{display:block;font-size:.62em;margin-top:2px}
+.rowtitle .t2,.browse .t2{display:block;font-size:.5em;letter-spacing:.04em;margin-top:4px}
+.browse .t2{font-size:.7em}
+.pill .t{display:inline-block;text-align:center;line-height:1.05}
+.navpill a{text-align:center;line-height:1.05}
+html[data-lang="en"] .bub .vi,html[data-lang="en"] .ans em,html[data-lang="en"] .tab small{display:none}
 .pill{display:inline-flex;align-items:center;justify-content:center;gap:calc(10*var(--u));border-radius:999px;font-family:var(--body);font-weight:500;white-space:nowrap;transition:transform .25s cubic-bezier(.3,1.4,.5,1),box-shadow .25s;text-decoration:none}
 .pill:hover{transform:translateY(calc(-2*var(--u)));box-shadow:0 calc(8*var(--u)) calc(20*var(--u)) rgba(28,70,120,.18)}
 .pill.white{background:#fff;color:var(--leaf)}
@@ -281,6 +292,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
   .topbar{width:100%;display:flex;justify-content:space-between;align-items:center;padding-top:14px}
   .logo{font-size:22px;gap:6px}.logo svg{width:24px;height:24px}
   .navpill{display:none}
+  .langsw{height:34px;padding:3px;gap:2px}.langsw button{padding:0 9px;font-size:12px}
   .join{width:auto;height:40px;padding:0 18px;font-size:15px}
   .copy{position:relative;margin-top:64px}
   .kicker,.headline,.sub{position:static}
@@ -330,30 +342,31 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
         EfforthlessE
       </a>
       <nav class="navpill abs anim-drop" aria-label="Main">
-        <a href="#book" data-jump="book">Courses</a>
-        <a href="#pron" data-jump="pron">Sounds</a>
-        <a href="#talk" data-jump="talk">Speaking</a>
-        <a href="#room" data-go="garden">My Garden</a>
+        <a href="#book" data-jump="book"><span class="t" data-en="Courses" data-vi="Khoá học" data-inline="1">Courses</span></a>
+        <a href="#pron" data-jump="pron"><span class="t" data-en="Sounds" data-vi="Phát âm" data-inline="1">Sounds</span></a>
+        <a href="#talk" data-jump="talk"><span class="t" data-en="Speaking" data-vi="Giao tiếp" data-inline="1">Speaking</span></a>
+        <a href="#room" data-go="garden"><span class="t" data-en="My Garden" data-vi="Vườn của tôi" data-inline="1">My Garden</span></a>
       </nav>
-      <a class="pill white join abs anim-drop" href="#room" data-go="story">Join us</a>
+      <div class="langsw abs anim-drop" role="group" aria-label="Language / Ngôn ngữ"><button type="button" data-lang="en">EN</button><button type="button" data-lang="vi">VI</button><button type="button" data-lang="both">EN+VI</button></div>
+      <a class="pill white join abs anim-drop" href="#room" data-go="story"><span class="t" data-en="Join us" data-vi="Tham gia" data-inline="1">Join us</span></a>
     </div>
 
     <div class="copy abs">
       <p class="kicker anim-blur">NHUNG'S</p>
       <h1 class="headline"><span class="anim-line">Easy</span><span class="anim-line">English Club</span></h1>
-      <p class="sub anim-rise"><span>Learn English the effortless way, out in the meadow.</span> <span>Every lesson is a tiny story and a listen-and-tap game.</span> <span>Six courses, plus sounds and real conversations.</span></p>
+      <p class="sub anim-rise"><span class="t" data-en="Learn English the effortless way, out in the meadow." data-vi="Học tiếng Anh nhẹ nhàng như dạo giữa đồng cỏ." data-both="vi">Learn English the effortless way, out in the meadow.</span> <span class="t" data-en="Every lesson is a tiny story and a listen-and-tap game." data-vi="Mỗi bài là một câu chuyện nhỏ và một trò nghe chọn hình." data-both="vi">Every lesson is a tiny story and a listen-and-tap game.</span> <span class="t" data-en="Six courses, plus sounds and real conversations." data-vi="Sáu khoá học, cùng phát âm và hội thoại thực tế." data-both="vi">Six courses, plus sounds and real conversations.</span></p>
       <div class="ctas">
-        <a class="pill white cta1 abs anim-rise" href="#book" data-jump="book">Open book</a>
+        <a class="pill white cta1 abs anim-rise" href="#book" data-jump="book"><span class="t" data-en="Open book" data-vi="Mở sách" data-inline="1">Open book</span></a>
         <button class="pill mint cta2 abs anim-rise" type="button" id="heroListen">
           <svg class="tri" viewBox="0 0 18 20" aria-hidden="true"><path d="M3 2.6c0-1.5 1.6-2.4 2.9-1.6l10.3 6.4c1.2.8 1.2 2.6 0 3.4L5.9 17.2C4.6 18 3 17.1 3 15.6Z" fill="#fff"/></svg>
-          Listen first
+          <span class="t" data-en="Listen first" data-vi="Nghe thử" data-inline="1">Listen first</span>
         </button>
       </div>
     </div>
 
     <div class="rowhead" id="lessons">
-      <h2 class="rowtitle abs anim-rise">LESSONS</h2>
-      <a class="browse abs anim-rise" href="#courses" data-jump="courses">browse all courses <span class="chev">›</span></a>
+      <h2 class="rowtitle abs anim-rise"><span class="t" data-en="LESSONS" data-vi="BÀI HỌC" data-inline="1">LESSONS</span></h2>
+      <a class="browse abs anim-rise" href="#courses" data-jump="book"><span class="t" data-en="browse all courses" data-vi="xem tất cả khoá học" data-inline="1">browse all courses</span> <span class="chev">›</span></a>
     </div>
     <div class="cards abs" id="cards"></div>
   </div>
@@ -363,10 +376,10 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
   <div class="wrap">
     <section class="block" id="book" aria-labelledby="bookTitle">
       <div class="sechead" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:end">
-        <div><div class="eyebrow">Khoá học · Courses</div><h2 id="bookTitle">Your course library</h2>
-        <p>Mỗi khoá là một cuốn sách riêng. Mở một khoá, mỗi trang là một bài: bấm nút nghe theo đúng tên tệp gốc, mở bài đọc PDF, rồi lật sang trang sau.</p></div>
+        <div><div class="eyebrow"><span class="t" data-en="Courses" data-vi="Khoá học" data-inline="1">Courses</span></div><h2 id="bookTitle"><span class="t" data-en="Your course library" data-vi="Tủ sách khoá học của bạn">Your course library</span></h2>
+        <p><span class="t" data-en="Each course is its own book. Open one and every page is a lesson: tap a listen button named after the original file, open the PDF reading, then turn the page." data-vi="Mỗi khoá là một cuốn sách riêng. Mở một khoá, mỗi trang là một bài: bấm nút nghe theo đúng tên tệp gốc, mở bài đọc PDF, rồi lật sang trang sau.">Each course is its own book. Open one and every page is a lesson: tap a listen button named after the original file, open the PDF reading, then turn the page.</span></p></div>
         <div style="display:grid;gap:8px;justify-items:end"><span class="modebadge" id="modeBadge"></span>
-        <label class="say soft" id="pickWrap" for="pickDir" style="cursor:pointer">Chọn thư mục Effortless English trên máy này</label>
+        <label class="say soft" id="pickWrap" for="pickDir" style="cursor:pointer"><span class="t" data-en="Choose the Effortless English folder on this device" data-vi="Chọn thư mục Effortless English trên máy này" data-inline="1">Choose the Effortless English folder on this device</span></label>
         <input type="file" id="pickDir" webkitdirectory directory multiple hidden></div>
       </div>
       <div class="courses" id="shelf" role="group" aria-label="Chọn khoá"></div>
@@ -383,14 +396,14 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
     <div class="block">
     <div class="roomhead">
       <div>
-        <div class="eyebrow">Luyện thêm · Practice room</div>
+        <div class="eyebrow"><span class="t" data-en="Practice room" data-vi="Luyện thêm" data-inline="1">Practice room</span></div>
         <h2 id="roomTitle">In the Garden</h2>
-        <p>Nghe trước, hiểu sau. Bấm vào từng câu để nghe lại, lật thẻ để xem nghĩa, rồi chơi trò nghe và chọn hình. Không cần học ngữ pháp, chỉ cần nghe thật nhiều.</p>
+        <p><span class="t" data-en="Listen first, understand later. Tap any sentence to hear it again, flip cards to see the meaning, then play the listen-and-tap game. No grammar, just lots of listening." data-vi="Nghe trước, hiểu sau. Bấm vào từng câu để nghe lại, lật thẻ để xem nghĩa, rồi chơi trò nghe và chọn hình. Không cần học ngữ pháp, chỉ cần nghe thật nhiều.">Listen first, understand later. Tap any sentence to hear it again, flip cards to see the meaning, then play the listen-and-tap game. No grammar, just lots of listening.</span></p>
       </div>
       <div class="garden" id="garden" aria-label="My garden">
-        <div class="stat"><b id="stWords">0</b><span>từ đã thuộc</span></div>
-        <div class="stat"><b id="stStars">0</b><span>ngôi sao</span></div>
-        <div class="stat"><b id="stListens">0</b><span>lần nghe</span></div>
+        <div class="stat"><b id="stWords">0</b><span><span class="t" data-en="words learned" data-vi="từ đã thuộc">words learned</span></span></div>
+        <div class="stat"><b id="stStars">0</b><span><span class="t" data-en="stars" data-vi="ngôi sao">stars</span></span></div>
+        <div class="stat"><b id="stListens">0</b><span><span class="t" data-en="listens" data-vi="lần nghe">listens</span></span></div>
       </div>
     </div>
 
@@ -410,51 +423,55 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
     </div>
 
     <section class="block sec" id="pron" aria-labelledby="pronTitle">
-      <div class="sechead"><div class="eyebrow">(6) Pronunciation · Luyện phát âm</div><h2 id="pronTitle">Sounds that Vietnamese speakers mix up</h2>
-        <p>Bấm từng từ để nghe sự khác nhau, đọc mẹo đặt miệng, rồi kiểm tra tai của bạn bằng trò "Bạn nghe thấy từ nào?". Nghe ở tốc độ chậm trước, sau đó nói to theo.</p></div>
-      <div class="srcbox"><b>Tài liệu gốc của bạn</b><p>Nghe 20 unit Pronunciation (2018) và xem 16 video Pronunciation Workshop, mỗi bài là một trang.</p>
-        <div class="readings"><button class="reading" type="button" data-opencourse="pron">Mở Pronunciation (2018) ›</button><button class="reading" type="button" data-opencourse="workshop">Mở Pronunciation Workshop (video) ›</button></div></div>
-      <h3 class="subh" style="margin-top:0">Cặp âm dễ nhầm</h3>
+      <div class="sechead"><div class="eyebrow"><span class="t" data-en="Pronunciation" data-vi="Luyện phát âm" data-inline="1">Pronunciation</span></div><h2 id="pronTitle"><span class="t" data-en="Sounds that Vietnamese speakers mix up" data-vi="Những âm người Việt hay nhầm">Sounds that Vietnamese speakers mix up</span></h2>
+        <p><span class="t" data-en="Tap each word to hear the difference, read the mouth tip, then test your ear with “Which word did you hear?”. Listen slowly first, then say it out loud." data-vi="Bấm từng từ để nghe sự khác nhau, đọc mẹo đặt miệng, rồi kiểm tra tai của bạn bằng trò &quot;Bạn nghe thấy từ nào?&quot;. Nghe ở tốc độ chậm trước, sau đó nói to theo.">Tap each word to hear the difference, read the mouth tip, then test your ear with “Which word did you hear?”. Listen slowly first, then say it out loud.</span></p></div>
+      <div class="srcbox"><b><span class="t" data-en="Your original materials" data-vi="Tài liệu gốc của bạn">Your original materials</span></b><p><span class="t" data-en="Listen to the 20 Pronunciation (2018) units and watch the 16 Pronunciation Workshop videos, one lesson per page." data-vi="Nghe 20 unit Pronunciation (2018) và xem 16 video Pronunciation Workshop, mỗi bài là một trang.">Listen to the 20 Pronunciation (2018) units and watch the 16 Pronunciation Workshop videos, one lesson per page.</span></p>
+        <div class="readings"><button class="reading" type="button" data-opencourse="pron"><span class="t" data-en="Open Pronunciation (2018) ›" data-vi="Mở Pronunciation (2018) ›" data-inline="1">Open Pronunciation (2018) ›</span></button><button class="reading" type="button" data-opencourse="workshop"><span class="t" data-en="Open Pronunciation Workshop (video) ›" data-vi="Mở Pronunciation Workshop (video) ›" data-inline="1">Open Pronunciation Workshop (video) ›</span></button></div></div>
+      <h3 class="subh" style="margin-top:0"><span class="t" data-en="Easily confused sounds" data-vi="Cặp âm dễ nhầm" data-inline="1">Easily confused sounds</span></h3>
       <div class="pairs" id="pairs"></div>
-      <h3 class="subh">Bạn nghe thấy từ nào?</h3>
+      <h3 class="subh"><span class="t" data-en="Which word did you hear?" data-vi="Bạn nghe thấy từ nào?" data-inline="1">Which word did you hear?</span></h3>
       <div class="game" id="earGame"></div>
-      <h3 class="subh">Trọng âm · Word stress</h3>
-      <p class="tip">Âm tiết màu đỏ được nhấn mạnh: đọc to hơn, dài hơn và cao giọng hơn.</p>
+      <h3 class="subh"><span class="t" data-en="Word stress" data-vi="Trọng âm" data-inline="1">Word stress</span></h3>
+      <p class="tip"><span class="t" data-en="The red syllable is stressed: say it louder, longer and higher." data-vi="Âm tiết màu đỏ được nhấn mạnh: đọc to hơn, dài hơn và cao giọng hơn.">The red syllable is stressed: say it louder, longer and higher.</span></p>
       <div class="stress" id="stress"></div>
-      <h3 class="subh">Nói đuổi · Shadowing</h3>
-      <p class="tip">Nghe chậm, rồi nghe tốc độ thường, rồi nói cùng lúc với giọng đọc. Chú ý chỗ nối âm (gạch dưới).</p>
+      <h3 class="subh"><span class="t" data-en="Shadowing" data-vi="Nói đuổi" data-inline="1">Shadowing</span></h3>
+      <p class="tip"><span class="t" data-en="Listen slowly, then at normal speed, then speak along with the voice. Watch the linked sounds (underlined)." data-vi="Nghe chậm, rồi nghe tốc độ thường, rồi nói cùng lúc với giọng đọc. Chú ý chỗ nối âm (gạch dưới).">Listen slowly, then at normal speed, then speak along with the voice. Watch the linked sounds (underlined).</span></p>
       <div class="shadow" id="shadow"></div>
     </section>
 
     <section class="block sec" id="talk" aria-labelledby="talkTitle">
-      <div class="sechead"><div class="eyebrow">Giao tiếp · Everyday speaking</div><h2 id="talkTitle">Real conversations</h2>
+      <div class="sechead"><div class="eyebrow"><span class="t" data-en="Everyday speaking" data-vi="Giao tiếp" data-inline="1">Everyday speaking</span></div><h2 id="talkTitle"><span class="t" data-en="Real conversations" data-vi="Hội thoại thực tế">Real conversations</span></h2>
         <p>Nghe cả đoạn hội thoại, rồi chọn vai để luyện nói. App đọc lời của người kia, đến lượt bạn thì câu của bạn bị làm mờ: tự nói to, bấm "Gợi ý" nếu quên, rồi bấm "Tiếp".</p></div>
-      <div class="srcbox"><b>Tài liệu gốc của bạn</b><p>51 bài Pimsleur English (30 bài nghe, 21 bài đọc) kèm 2 cuốn sách PDF, dành cho người mới bắt đầu giao tiếp.</p>
-        <div class="readings"><button class="reading" type="button" data-opencourse="pimsleur">Mở Pimsleur English ›</button></div></div>
-      <h3 class="subh" style="margin-top:0">Hội thoại nhập vai</h3>
+      <div class="srcbox"><b><span class="t" data-en="Your original materials" data-vi="Tài liệu gốc của bạn">Your original materials</span></b><p><span class="t" data-en="51 Pimsleur English lessons (30 listening, 21 reading) plus 2 PDF books, for beginners in everyday conversation." data-vi="51 bài Pimsleur English (30 bài nghe, 21 bài đọc) kèm 2 cuốn sách PDF, dành cho người mới bắt đầu giao tiếp.">51 Pimsleur English lessons (30 listening, 21 reading) plus 2 PDF books, for beginners in everyday conversation.</span></p>
+        <div class="readings"><button class="reading" type="button" data-opencourse="pimsleur"><span class="t" data-en="Open Pimsleur English ›" data-vi="Mở Pimsleur English ›" data-inline="1">Open Pimsleur English ›</span></button></div></div>
+      <h3 class="subh" style="margin-top:0"><span class="t" data-en="Role-play dialogues" data-vi="Hội thoại nhập vai" data-inline="1">Role-play dialogues</span></h3>
       <div class="topics" id="topics" role="group" aria-label="Choose a topic"></div>
       <div class="controls" style="margin:0 0 16px">
-        <button class="say" type="button" id="dlgPlay">Nghe cả đoạn</button>
-        <button class="say soft" type="button" id="roleA">Tôi là A</button>
-        <button class="say soft" type="button" id="roleB">Tôi là B</button>
-        <button class="say soft" type="button" id="viToggle">Ẩn tiếng Việt</button>
+        <button class="say" type="button" id="dlgPlay"><span class="t" data-en="Play whole dialogue" data-vi="Nghe cả đoạn" data-inline="1">Play whole dialogue</span></button>
+        <button class="say soft" type="button" id="roleA"><span class="t" data-en="I&#x27;m A" data-vi="Tôi là A" data-inline="1">I&#x27;m A</span></button>
+        <button class="say soft" type="button" id="roleB"><span class="t" data-en="I&#x27;m B" data-vi="Tôi là B" data-inline="1">I&#x27;m B</span></button>
+        <button class="say soft" type="button" id="viToggle"></button>
       </div>
       <div class="dialog" id="dialog"></div>
-      <div class="controls" id="rpControls" hidden><button class="say soft" type="button" id="rpHint">Gợi ý</button><button class="say" type="button" id="rpNext">Tiếp ›</button></div>
+      <div class="controls" id="rpControls" hidden><button class="say soft" type="button" id="rpHint"><span class="t" data-en="Hint" data-vi="Gợi ý" data-inline="1">Hint</span></button><button class="say" type="button" id="rpNext"><span class="t" data-en="Next ›" data-vi="Tiếp ›" data-inline="1">Next ›</span></button></div>
       <p class="turn" id="turn" aria-live="polite"></p>
     </section>
 
     <div class="method">
-      <div><b>Listen a lot</b><p>Nghe một câu chuyện nhiều lần trong ngày. Tai quen trước, miệng sẽ theo sau.</p></div>
-      <div><b>Learn phrases</b><p>Học cả cụm từ trong câu, không học từ đơn lẻ. Mỗi thẻ đều có câu ví dụ.</p></div>
-      <div><b>Answer fast</b><p>Trả lời câu hỏi thật nhanh bằng tiếng Anh, giống phần "point of view" của Effortless English.</p></div>
+      <div><b>Listen a lot</b><p><span class="t" data-en="Listen to one story many times a day. Your ears get used to it first, and your mouth follows." data-vi="Nghe một câu chuyện nhiều lần trong ngày. Tai quen trước, miệng sẽ theo sau.">Listen to one story many times a day. Your ears get used to it first, and your mouth follows.</span></p></div>
+      <div><b>Learn phrases</b><p><span class="t" data-en="Learn whole phrases from sentences, not single words. Every card has an example sentence." data-vi="Học cả cụm từ trong câu, không học từ đơn lẻ. Mỗi thẻ đều có câu ví dụ.">Learn whole phrases from sentences, not single words. Every card has an example sentence.</span></p></div>
+      <div><b>Answer fast</b><p><span class="t" data-en="Answer questions fast in English, like the “point of view” part of Effortless English." data-vi="Trả lời câu hỏi thật nhanh bằng tiếng Anh, giống phần &quot;point of view&quot; của Effortless English.">Answer questions fast in English, like the “point of view” part of Effortless English.</span></p></div>
     </div>
-    <p class="foot">EfforthlessE · tiến độ được lưu trên trình duyệt này.</p>
+    <p class="foot">EfforthlessE · <span class="t" data-en="progress is saved in this browser." data-vi="tiến độ được lưu trên trình duyệt này.">progress is saved in this browser.</span></p>
   </div>
 </main>
 
 <script>
 (function(){
+  /* language: en, vi or both */
+  let LANG='both'; try{LANG=localStorage.getItem('mb-lang')||'both'}catch(e){}
+  const T=(en,vi)=>LANG==='en'?en:LANG==='vi'?vi:(en===vi?en:en+(en.length+vi.length>60?' / ':' · ')+vi);
+  window.__T=T;
   /* frame unit from the real layout width (avoids the scrollbar overflow of 100vw) */
   const root=document.documentElement;
   function setU(){root.style.setProperty('--u',(root.clientWidth/1440)+'px')}
@@ -583,9 +600,9 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
         </div>
       </div>
       <aside class="story-side"><h3>${esc(L.vi)}</h3>
-        <p class="tip">Nghe cả truyện 3 lần. Lần 1 chỉ nghe, lần 2 nhìn chữ, lần 3 nói theo từng câu. Bấm vào câu bất kỳ để nghe lại câu đó.</p>
-        <p class="tip"><b>Từ mới:</b> ${L.words.map(w=>esc(w[0])).join(', ')}</p>
-        <button class="say soft" type="button" data-go-tab="words">Học từ mới ›</button>
+        <p class="tip">${T('Listen to the whole story 3 times: first just listen, then follow the text, then repeat each sentence. Tap any sentence to hear it again.','Nghe cả truyện 3 lần. Lần 1 chỉ nghe, lần 2 nhìn chữ, lần 3 nói theo từng câu. Bấm vào câu bất kỳ để nghe lại câu đó.')}</p>
+        <p class="tip"><b>${T('New words:','Từ mới:')}</b> ${L.words.map(w=>esc(w[0])).join(', ')}</p>
+        <button class="say soft" type="button" data-go-tab="words">${T('Learn the new words ›','Học từ mới ›')}</button>
       </aside></div>`;
     const lines=[...pane.querySelectorAll('.ln')];
     const mark=i=>lines.forEach((l,j)=>l.classList.toggle('on',j===i));
@@ -601,13 +618,13 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
   /* Words */
   function paneWords(){
     const L=LESSONS[cur];
-    pane.innerHTML=`<div class="deckbar"><h3>Lật thẻ để xem nghĩa</h3><span class="tip" style="margin:0">Bấm thẻ để lật · nút loa để nghe · đánh dấu từ đã thuộc</span></div>
+    pane.innerHTML=`<div class="deckbar"><h3>${T('Flip a card to see the meaning','Lật thẻ để xem nghĩa')}</h3><span class="tip" style="margin:0">${T('Tap to flip · speaker to listen · mark words you know','Bấm thẻ để lật · nút loa để nghe · đánh dấu từ đã thuộc')}</span></div>
       <div class="deck">${L.words.map((w,i)=>{const k=P.known[L.id+':'+w[0]];return `
       <div class="flash" data-w="${i}">
         <div class="in">
           <div class="face front" role="button" tabindex="0" aria-label="Flip card ${esc(w[0])}">${k?'<span class="known" aria-label="known">✓</span>':''}<span class="pic">${w[1]}</span><span class="word">${esc(w[0])}</span><span class="ipa">${esc(w[2])}</span></div>
           <div class="face back" role="button" tabindex="0"><span class="vi">${esc(w[3])}</span><span class="ex">“${esc(w[4])}”</span>
-            <span class="controls" style="margin-top:8px"><button class="say soft" type="button" data-say="${i}">${ICON}</button><button class="say" type="button" data-know="${i}">${k?'Đã thuộc ✓':'Tôi đã thuộc'}</button></span></div>
+            <span class="controls" style="margin-top:8px"><button class="say soft" type="button" data-say="${i}">${ICON}</button><button class="say" type="button" data-know="${i}">${k?T('Known ✓','Đã thuộc ✓'):T('I know it','Tôi đã thuộc')}</button></span></div>
         </div></div>`}).join('')}</div>`;
     pane.querySelectorAll('.flash').forEach(card=>{
       const w=L.words[+card.dataset.w];
@@ -627,8 +644,8 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
       if(q>=N){
         const st=score>=5?3:score>=4?2:score>=2?1:0;
         P.stars[L.id]=Math.max(P.stars[L.id]||0,st); save();
-        pane.innerHTML=`<div class="quiz"><div class="result"><b>${score} / ${N}</b><p>${['Cố lên nhé! Nghe lại truyện rồi thử lần nữa.','Khá rồi! Thêm một lần nữa nhé.','Giỏi lắm!','Tuyệt vời! Bạn được 3 sao.'][st]}</p>
-          <div class="controls" style="justify-content:center"><button class="say" type="button" id="again">Chơi lại</button>${cur<LESSONS.length-1?'<button class="say soft" type="button" id="nextL">Bài tiếp theo ›</button>':''}</div></div></div>`;
+        pane.innerHTML=`<div class="quiz"><div class="result"><b>${score} / ${N}</b><p>${[T('Keep going! Listen to the story again and try once more.','Cố lên nhé! Nghe lại truyện rồi thử lần nữa.'),T('Not bad! One more round.','Khá rồi! Thêm một lần nữa nhé.'),T('Great job!','Giỏi lắm!'),T('Excellent! You got 3 stars.','Tuyệt vời! Bạn được 3 sao.')][st]}</p>
+          <div class="controls" style="justify-content:center"><button class="say" type="button" id="again">${T('Play again','Chơi lại')}</button>${cur<LESSONS.length-1?'<button class="say soft" type="button" id="nextL">'+T('Next lesson ›','Bài tiếp theo ›')+'</button>':''}</div></div></div>`;
         document.getElementById('again').onclick=paneListen;
         const n=document.getElementById('nextL'); if(n) n.onclick=()=>{cur++;renderPick();setTab('story')};
         return;
@@ -637,8 +654,8 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
       const others=[...L.words.keys()].filter(i=>i!==ans).sort(()=>Math.random()-.5).slice(0,3);
       opts=[ans,...others].sort(()=>Math.random()-.5); locked=false;
       pane.innerHTML=`<div class="quiz">
-        <div class="qtop"><span>Câu ${q+1} / ${N}</span><span class="dots">${Array.from({length:N},(_,i)=>`<i class="${res[i]===true?'ok':res[i]===false?'no':i===q?'now':''}"></i>`).join('')}</span></div>
-        <h3>Nghe và chọn hình đúng</h3>
+        <div class="qtop"><span>${T('Question','Câu')} ${q+1} / ${N}</span><span class="dots">${Array.from({length:N},(_,i)=>`<i class="${res[i]===true?'ok':res[i]===false?'no':i===q?'now':''}"></i>`).join('')}</span></div>
+        <h3>${T('Listen and tap the right picture','Nghe và chọn hình đúng')}</h3>
         <button class="bigplay" type="button" id="hear" aria-label="Play the word">${TRI}</button>
         <div class="opts">${opts.map(i=>`<button class="opt" type="button" data-o="${i}"><span class="pic">${L.words[i][1]}</span>${esc(L.words[i][0])}</button>`).join('')}</div>
         <div class="feedback" id="fb" aria-live="polite">${synth?'':'Trình duyệt này không đọc được giọng nói. Hãy đọc từ: <b>'+esc(L.words[ans][0])+'</b>'}</div></div>`;
@@ -650,7 +667,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
         b.classList.add(ok?'right':'wrong');
         if(!ok) pane.querySelector(`[data-o="${ans}"]`).classList.add('right');
         const w=L.words[ans];
-        document.getElementById('fb').innerHTML=ok?`Đúng rồi! <b>${esc(w[0])}</b> = ${esc(w[3])}`:`Chưa đúng. Đáp án là <b>${esc(w[0])}</b> (${esc(w[3])})`;
+        document.getElementById('fb').innerHTML=ok?`${T('Correct!','Đúng rồi!')} <b>${esc(w[0])}</b> = ${esc(w[3])}`:`${T('Not quite. The answer is','Chưa đúng. Đáp án là')} <b>${esc(w[0])}</b> (${esc(w[3])})`;
         speak(ok?'Yes! '+w[0]:w[0]);
         setTimeout(()=>{q++;draw()},1500);
       });
@@ -661,9 +678,9 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
   /* Answer */
   function paneAnswer(){
     const L=LESSONS[cur];
-    pane.innerHTML=`<h3>Trả lời thật nhanh</h3><p class="tip">Nghe câu hỏi, tự trả lời to bằng tiếng Anh, rồi bấm “Xem đáp án” để so sánh.</p>
+    pane.innerHTML=`<h3>${T('Answer fast','Trả lời thật nhanh')}</h3><p class="tip">${T('Listen to the question, answer out loud in English, then tap “Show answer” to compare.','Nghe câu hỏi, tự trả lời to bằng tiếng Anh, rồi bấm “Xem đáp án” để so sánh.')}</p>
       <div class="qa">${L.qa.map((x,i)=>`<div class="qrow"><div class="qline"><p>${esc(x[0])}</p>
-        <span class="controls" style="margin:0"><button class="say soft" type="button" data-q="${i}">${ICON} Nghe</button><button class="say" type="button" data-a="${i}">Xem đáp án</button></span></div>
+        <span class="controls" style="margin:0"><button class="say soft" type="button" data-q="${i}">${ICON} ${T('Listen','Nghe')}</button><button class="say" type="button" data-a="${i}">${T('Show answer','Xem đáp án')}</button></span></div>
         <p class="ans" id="ans${i}" hidden>${esc(x[1])}<em>${esc(x[2])}</em></p></div>`).join('')}</div>`;
     pane.querySelectorAll('[data-q]').forEach(b=>b.onclick=()=>{stop();speak(L.qa[+b.dataset.q][0])});
     pane.querySelectorAll('[data-a]').forEach(b=>b.onclick=()=>{const i=+b.dataset.a,el=document.getElementById('ans'+i);el.hidden=false;stop();speak(L.qa[i][1])});
@@ -693,7 +710,8 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
   const IDS=/*IDS*/{}/*END*/;
   const LOCAL=location.protocol==='file:';
   const KIND={main:'Bài chính',vocabulary:'Từ vựng',ms:'Mini story',pov:'Góc nhìn',com:'Bình luận',conversation:'Hội thoại',Training:'Luyện tập',Practice:'Thực hành'};
-  const kindOf=n=>{const m=n.match(/\((\w+)\)\s*$/)||n.match(/(Training|Practice)/);return m&&KIND[m[1]]||''};
+  const KIND_EN={main:'Main',vocabulary:'Vocabulary',ms:'Mini story',pov:'Point of view',com:'Commentary',conversation:'Conversation',Training:'Training',Practice:'Practice'};
+  const kindOf=n=>{const m=n.match(/\((\w+)\)\s*$/)||n.match(/(Training|Practice)/);if(!m)return '';return T(KIND_EN[m[1]]||'',KIND[m[1]]||'')};
   const localUrl=p=>p.split('/').map(encodeURIComponent).join('/');
   const driveUrl=p=>{const v=IDS[p];if(!v)return null;const [id,q]=v.split('?');return 'https://drive.google.com/file/d/'+id+'/view'+(q?'?'+q:'')};
   const EMBED=!LOCAL&&window.EFF_EMBED===true;
@@ -701,28 +719,31 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
   const PICK=new Map(), BLOB=new Map();
   const srcUrl=p=>{if(LOCAL) return localUrl(p); const f=PICK.get(p); if(!f) return null; if(!BLOB.has(p)) BLOB.set(p,URL.createObjectURL(f)); return BLOB.get(p)};
   const folderUrl=IDS['']?'https://drive.google.com/drive/folders/'+IDS['']:null;
-  document.getElementById('modeBadge').textContent=LOCAL?'Đang dùng tệp trên máy tính':EMBED?'Phát từ Google Drive':'Đang dùng link Google Drive';
+  const setBadge=()=>{document.getElementById('modeBadge').textContent=PICK.size?T('Using ','Đang dùng ')+PICK.size+T(' files on this device',' tệp trên máy này'):LOCAL?T('Using files on this computer','Đang dùng tệp trên máy tính'):EMBED?T('Playing from Google Drive','Phát từ Google Drive'):T('Using Google Drive links','Đang dùng link Google Drive')};
+  setBadge();
   let B={c:0,l:0,seen:{}};
   try{const s=JSON.parse(localStorage.getItem('mb-book')||'null'); if(s) B=Object.assign(B,s)}catch(e){}
   const saveB=()=>{try{localStorage.setItem('mb-book',JSON.stringify(B))}catch(e){}};
   const PLAYTRI='<svg viewBox="0 0 18 20" aria-hidden="true"><path d="M3 2.6c0-1.5 1.6-2.4 2.9-1.6l10.3 6.4c1.2.8 1.2 2.6 0 3.4L5.9 17.2C4.6 18 3 17.1 3 15.6Z" fill="#fff"/></svg>';
   let audioEl=null, loopOn=false, speedV=1;
   const DESC={original:'Khoá gốc. Nghe truyện ngắn nhiều lần, học từ vựng ngay trong câu chuyện.',flow:'Nói trôi chảy qua những câu chuyện vui, nghe nhiều và nói theo cụm từ.',business:'Tiếng Anh cho công việc và thành công: tư duy, giải quyết vấn đề, nổi bật.',power:'Tâm lý học ngôn ngữ: cảm xúc, niềm tin, thói quen của người nói giỏi.',real:'Hội thoại đời thực của người bản xứ về du lịch, gia đình, cuộc sống.',pron:'Phát âm giọng Mỹ theo từng unit: Training và Practice.',workshop:'Video luyện phát âm: R và W, nguyên âm, nối âm, ngữ điệu, đọc đoạn văn.',pimsleur:'Tiếng Anh giao tiếp cho người mới bắt đầu: bài nghe và bài đọc Pimsleur.',method:'Tài liệu và video hướng dẫn phương pháp Effortless English.'};
+  const DESC_EN={original:'The original course. Listen to short stories many times and learn vocabulary inside the story.',flow:'Speak fluently through funny stories: listen a lot and speak in phrases.',business:'English for work and success: mindset, solving problems, standing out.',power:'The psychology of speaking: emotions, beliefs and habits of strong speakers.',real:'Real conversations with native speakers about travel, family and life.',pron:'American pronunciation, unit by unit: Training and Practice.',workshop:'Pronunciation videos: R and W, vowels, linking, intonation, reading passages.',pimsleur:'Everyday English for beginners: Pimsleur listening and reading lessons.',method:'Guides and videos on the Effortless English method.'};
+  const cname=c=>c.id==='method'?T('Method','Phương pháp'):c.name;
   const COLORS=['#5b875c','#3d8fb0','#6a6fb5','#d07a35','#c25a6b','#2f6fb8','#7a8f3a','#b0663d','#5f6b73'];
   function drawShelf(){
     document.getElementById('shelf').innerHTML=LIB.map((c,i)=>{
       const L=c.lessons, a=L.reduce((s,x)=>s+x.audio.length,0), v=L.reduce((s,x)=>s+(x.video||[]).length,0), d=L.reduce((s,x)=>s+x.pdf.length,0);
-      const parts=[L.length+' trang', a?a+' bài nghe':'', v?v+' video':'', d?d+' PDF':''].filter(Boolean).join(' · ');
+      const parts=[L.length+' '+T('pages','trang'), a?a+' '+T('audio','bài nghe'):'', v?v+' video':'', d?d+' PDF':''].filter(Boolean).join(' · ');
       return `<button class="course" type="button" data-shelf="${i}"><span class="top"><span class="num" style="background:${COLORS[i%COLORS.length]}">${i<6?i+1:'+'}</span><span class="yr">${c.year||''}</span></span>
-        <b>${esc(c.name)}</b><p>${esc(DESC[c.id]||'')}</p><span class="cnt">${parts}</span><span class="go">Mở khoá học ›</span></button>`}).join('');
+        <b>${esc(cname(c))}</b><p>${esc(LANG==='en'?(DESC_EN[c.id]||''):LANG==='vi'?(DESC[c.id]||''):(DESC_EN[c.id]||'')+' / '+(DESC[c.id]||''))}</p><span class="cnt">${parts}</span><span class="go">${T('Open course ›','Mở khoá học ›')}</span></button>`}).join('');
   }
   function openCourse(i,keep){
     if(audioEl) audioEl.pause(); stop();
     if(!keep){ B.pos=B.pos||{}; B.pos[LIB[B.c]&&LIB[B.c].id]=B.l; B.c=i; B.l=(B.pos[LIB[i].id])||0 }
     B.open=true; saveB();
     const C=LIB[B.c];
-    document.getElementById('rdName').textContent=C.name;
-    document.getElementById('rdYear').textContent=(B.c<6?'Khoá '+(B.c+1):'Tài liệu thêm')+(C.year?' · '+C.year:'');
+    document.getElementById('rdName').textContent=cname(C);
+    document.getElementById('rdYear').textContent=(B.c<6?T('Course ','Khoá ')+(B.c+1):T('Extra materials','Tài liệu thêm'))+(C.year?' · '+C.year:'');
     document.getElementById('shelf').hidden=true; document.getElementById('reader').hidden=false;
     drawToc(); drawPage();
   }
@@ -743,11 +764,11 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
     B.seen[C.id+':'+B.l]=1; saveB();
     const NAT=LOCAL||(PICK.size>0&&[...L.audio,...(L.video||[])].some(a=>PICK.has(a[1])));
     const tracks=[...L.audio.map(a=>({n:a[0],p:a[1],t:'a'})),...(L.video||[]).map(a=>({n:a[0],p:a[1],t:'v'}))].filter(t=>NAT?(LOCAL||PICK.has(t.p)):IDS[t.p]);
-    const label=C.id==='method'?'Phần':C.id==='pimsleur'?'Bài':C.id==='pron'?'Unit':'Bài';
+    const label=C.id==='method'?T('Part','Phần'):C.id==='pron'?'Unit':T('Lesson','Bài');
     let h=`<div class="pagehead"><div><div class="eyebrow">${esc(C.name)} · ${label} ${B.l+1} / ${C.lessons.length}</div><h3>${esc(L.title)}</h3></div>
       <div class="pager"><button type="button" id="pgPrev" aria-label="Trang trước" ${B.l===0?'disabled':''}>‹</button><button type="button" id="pgNext" aria-label="Trang sau" ${B.l===C.lessons.length-1?'disabled':''}>›</button></div></div>`;
     if(L.pdf.length){
-      h+=`<div><div class="eyebrow" style="margin-bottom:8px">Trang sách · PDF</div><div class="readings">${L.pdf.map((d,i)=>{const u=fileLink(d[1]);
+      h+=`<div><div class="eyebrow" style="margin-bottom:8px">${T('Book pages · PDF','Trang sách · PDF')}</div><div class="readings">${L.pdf.map((d,i)=>{const u=fileLink(d[1]);
         return (NAT||EMBED)?`<button class="reading" type="button" data-pdf="${i}" aria-pressed="${i===0}">${esc(d[0])}</button>`
           :u?`<a class="reading" href="${u}" target="_blank" rel="noopener">${esc(d[0])} ↗</a>`:`<span class="reading" style="opacity:.55">${esc(d[0])}</span>`}).join('')}</div></div>`;
     }
@@ -756,16 +777,16 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
       h+=`<div class="tracks">${tracks.map((t,i)=>{const u=fileLink(t.p);const kd=t.t==='v'?'Video':kindOf(t.n);
         return (NAT||EMBED)?`<button class="track" type="button" data-track="${i}"><span class="pb">${PLAYTRI}</span><span class="nm">${esc(t.n)}</span>${kd?`<span class="kd">${kd}</span>`:'<span></span>'}</button>`
           :u?`<a class="track" href="${u}" target="_blank" rel="noopener"><span class="pb">${PLAYTRI}</span><span class="nm">${esc(t.n)}</span>${kd?`<span class="kd">${kd}</span>`:'<span></span>'}</a>`
-          :`<div class="track" aria-disabled="true" style="opacity:.55"><span class="pb">${PLAYTRI}</span><span class="nm">${esc(t.n)}</span><span class="kd">chưa có link</span></div>`}).join('')}</div>`;
+          :`<div class="track" aria-disabled="true" style="opacity:.55"><span class="pb">${PLAYTRI}</span><span class="nm">${esc(t.n)}</span><span class="kd">${T('no link yet','chưa có link')}</span></div>`}).join('')}</div>`;
       if(NAT){
-      h+=`<div class="player" id="player"><span class="now" id="nowName">Chọn một bài nghe ở trên</span><audio id="aud" controls preload="none"></audio>
+      h+=`<div class="player" id="player"><span class="now" id="nowName">${T('Pick a track above','Chọn một bài nghe ở trên')}</span><audio id="aud" controls preload="none"></audio>
         <video id="vid" controls preload="none" style="width:100%;border-radius:12px;display:none"></video>
-        <div class="row"><button type="button" id="loopBtn" aria-pressed="${loopOn}">Lặp lại</button>${[0.75,1,1.25].map(r=>`<button type="button" data-spd="${r}" aria-pressed="${r===speedV}">${r}x</button>`).join('')}<button type="button" id="nextTrack">Bài tiếp ›</button></div></div>`;
+        <div class="row"><button type="button" id="loopBtn" aria-pressed="${loopOn}">${T('Repeat','Lặp lại')}</button>${[0.75,1,1.25].map(r=>`<button type="button" data-spd="${r}" aria-pressed="${r===speedV}">${r}x</button>`).join('')}<button type="button" id="nextTrack">Bài tiếp ›</button></div></div>`;
       }
       if(EMBED&&!NAT){
-      h+=`<div class="player" id="player"><span class="now" id="nowName">Chọn một bài nghe ở trên</span><iframe id="dplay" title="Trình phát" allow="autoplay" style="width:100%;height:0;border:0;border-radius:12px;background:#fff"></iframe><div class="row"><button type="button" id="nextTrack">Bài tiếp ›</button><a id="openDrive" style="color:#fff;font-size:13.5px" target="_blank" rel="noopener" hidden>Mở trong Drive ↗</a></div></div>`;
+      h+=`<div class="player" id="player"><span class="now" id="nowName">${T('Pick a track above','Chọn một bài nghe ở trên')}</span><iframe id="dplay" title="Trình phát" allow="autoplay" style="width:100%;height:0;border:0;border-radius:12px;background:#fff"></iframe><div class="row"><button type="button" id="nextTrack">Bài tiếp ›</button><a id="openDrive" style="color:#fff;font-size:13.5px" target="_blank" rel="noopener" hidden>Mở trong Drive ↗</a></div></div>`;
       }
-      if(!NAT&&!EMBED) h+=`<p class="note">Bấm một bài nghe để mở trong Google Drive và nghe ngay. Trên điện thoại, Drive mở trong trình duyệt hoặc ứng dụng Google Drive.</p>`;
+      if(!NAT&&!EMBED) h+=`<p class="note">${T('Tap a track to open it in Google Drive and listen right away.','Bấm một bài nghe để mở trong Google Drive và nghe ngay. Trên điện thoại, Drive mở trong trình duyệt hoặc ứng dụng Google Drive.')}</p>`;
     }
     if(L.pdf.length){
       if(NAT) h+=`<iframe class="pdfview" id="pdfview" title="Bài đọc" src="${srcUrl(L.pdf[0][1])}"></iframe>`;
@@ -826,9 +847,20 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
     files.forEach(f=>{const rel=(f.webkitRelativePath||f.name).split('/'); const tries=[rel.slice(1).join('/'),rel.join('/')];
       let hit=tries.find(t=>all.has(t)); if(!hit){const q=byName.get(f.name); if(q) hit=q}
       if(hit) PICK.set(hit,f)});
-    document.getElementById('modeBadge').textContent=PICK.size?'Đang dùng '+PICK.size+' tệp trên máy này':'Không tìm thấy tệp nào khớp, hãy chọn đúng thư mục Effortless English';
+    if(PICK.size) setBadge(); else document.getElementById('modeBadge').textContent=T('No matching files. Choose the Effortless English folder.','Không tìm thấy tệp nào khớp, hãy chọn đúng thư mục Effortless English');
     if(B.open){drawToc();drawPage()}
   });
+  function applyLang(){
+    root.dataset.lang=LANG; root.lang=LANG==='en'?'en':'vi';
+    document.querySelectorAll('.t').forEach(el=>{const en=el.dataset.en, vi=el.dataset.vi;
+      if(LANG==='en') el.textContent=en; else if(LANG==='vi'||el.dataset.both==='vi') el.textContent=vi;
+      else el.innerHTML=esc(en)+(el.dataset.inline&&!el.closest('.hero')?'<span class="t2 in"> · '+esc(vi)+'</span>':'<span class="t2">'+esc(vi)+'</span>')});
+    document.querySelectorAll('.langsw button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.lang===LANG));
+  }
+  document.querySelector('.langsw').addEventListener('click',e=>{const b=e.target.closest('[data-lang]');if(!b)return;
+    LANG=b.dataset.lang; try{localStorage.setItem('mb-lang',LANG)}catch(x){}
+    applyLang(); setBadge(); viTxt(); drawShelf(); drawShadow(); earRound(); setTab(tab); if(B.open) openCourse(B.c,true)});
+  applyLang();
   drawShelf(); if(B.open) openCourse(B.c,true);
 
   /* Courses */
@@ -844,7 +876,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
     const p=PAIRS[Math.floor(Math.random()*PAIRS.length)], pick=Math.random()<.5?p[1][0]:p[2][0];
     const g=document.getElementById('earGame');
     g.innerHTML=`<button class="bigplay" type="button" id="earPlay" aria-label="Play the word">${TRI}</button>
-      <div><p class="tip" style="margin:0 0 10px">Điểm: <b>${ear.ok} / ${ear.n}</b> · Cặp âm ${p[0]}</p>
+      <div><p class="tip" style="margin:0 0 10px">${T('Score','Điểm')}: <b>${ear.ok} / ${ear.n}</b> · ${p[0]}</p>
       <div class="opts2">${[p[1][0],p[2][0]].map(w=>`<button type="button" data-ear="${w}">${w}</button>`).join('')}</div>
       <p class="feedback" id="earFb" aria-live="polite"></p></div>`;
     const play=()=>{stop();speak(pick,null,{rate:.75})};
@@ -853,7 +885,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
     g.querySelectorAll('[data-ear]').forEach(b=>b.onclick=()=>{ if(done) return; done=true; ear.n++;
       const ok=b.dataset.ear===pick; if(ok) ear.ok++;
       b.classList.add(ok?'right':'wrong'); if(!ok) g.querySelector(`[data-ear="${pick}"]`).classList.add('right');
-      document.getElementById('earFb').textContent=ok?'Chính xác!':'Từ đúng là "'+pick+'". Nghe lại hai từ ở bảng bên trên nhé.';
+      document.getElementById('earFb').textContent=ok?T('Correct!','Chính xác!'):T('The word was','Từ đúng là')+' "'+pick+'".';
       setTimeout(earRound,1600)});
     return play;
   }
@@ -861,7 +893,10 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
   document.getElementById('stress').innerHTML=STRESS.map(s=>{const vi=s[s.length-1],w=s[s.length-2],syl=s.slice(0,-2);
     return `<button type="button" data-word="${w}"><span class="syl">${syl.map(x=>x===x.toUpperCase()?'<strong>'+x+'</strong>':x).join('·')}</span><small>${w} · ${esc(vi)}</small></button>`}).join('');
   document.getElementById('stress').addEventListener('click',e=>{const b=e.target.closest('[data-word]');if(b){stop();speak(b.dataset.word,null,SLOW)}});
-  document.getElementById('shadow').innerHTML=SHADOW.map((s,i)=>`<div class="qline"><p>${s[1]}</p><span class="controls" style="margin:0"><button class="say soft" type="button" data-sh="${i}" data-r=".6">${ICON} Chậm</button><button class="say" type="button" data-sh="${i}" data-r="1">${ICON} Thường</button></span></div>`).join('');
+  function drawShadow(){
+  document.getElementById('shadow').innerHTML=SHADOW.map((s,i)=>`<div class="qline"><p>${s[1]}</p><span class="controls" style="margin:0"><button class="say soft" type="button" data-sh="${i}" data-r=".6">${ICON} ${T('Slow','Chậm')}</button><button class="say" type="button" data-sh="${i}" data-r="1">${ICON} ${T('Normal','Thường')}</button></span></div>`).join('');
+  }
+  drawShadow();
   document.getElementById('shadow').addEventListener('click',e=>{const b=e.target.closest('[data-sh]');if(b){stop();speak(SHADOW[+b.dataset.sh][0],null,{rate:+b.dataset.r})}});
 
   /* Speaking */
@@ -876,9 +911,9 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
   function endRole(){role=null;document.getElementById('rpControls').hidden=true;bubs().forEach(b=>b.classList.remove('mine','hide'))}
   function rpStep(){
     const L=TOPICS[topic].l, t=document.getElementById('turn');
-    if(step>=L.length){markB(-1);t.textContent='Xong! Đổi vai và luyện thêm một lần nữa nhé.';endRole();return}
+    if(step>=L.length){markB(-1);t.textContent=T('Done! Switch roles and practise once more.','Xong! Đổi vai và luyện thêm một lần nữa nhé.');endRole();return}
     const [who,en]=L[step]; markB(step);
-    if(who===role){ t.textContent='Đến lượt bạn. Hãy nói to câu được làm mờ, rồi bấm "Tiếp".'; document.getElementById('rpControls').hidden=false }
+    if(who===role){ t.textContent=T('Your turn. Say the blurred line out loud, then tap “Next”.','Đến lượt bạn. Hãy nói to câu được làm mờ, rồi bấm "Tiếp".'); document.getElementById('rpControls').hidden=false }
     else { document.getElementById('rpControls').hidden=true; t.textContent=''; speak(en,()=>{step++;rpStep()},{pitch:PITCH[who]}) }
   }
   function startRole(r){
@@ -894,7 +929,8 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
   document.getElementById('roleB').onclick=()=>startRole('B');
   document.getElementById('rpHint').onclick=()=>{const b=bubs()[step];if(b)b.classList.remove('hide');speak(TOPICS[topic].l[step][1],null,{rate:.75})};
   document.getElementById('rpNext').onclick=()=>{const b=bubs()[step];if(b)b.classList.remove('hide');step++;rpStep()};
-  document.getElementById('viToggle').onclick=e=>{const d=document.getElementById('dialog');const h=d.classList.toggle('hidevi');e.currentTarget.textContent=h?'Hiện tiếng Việt':'Ẩn tiếng Việt'};
+  document.getElementById('viToggle').onclick=e=>{const d=document.getElementById('dialog');const h=d.classList.toggle('hidevi');e.currentTarget.textContent=h?T('Show Vietnamese','Hiện tiếng Việt'):T('Hide Vietnamese','Ẩn tiếng Việt')};
+  const viTxt=()=>{document.getElementById('viToggle').textContent=document.getElementById('dialog').classList.contains('hidevi')?T('Show Vietnamese','Hiện tiếng Việt'):T('Hide Vietnamese','Ẩn tiếng Việt')}; viTxt();
   drawTopics();
 
   renderCards(); renderPick(); stats(); setTab('story');
