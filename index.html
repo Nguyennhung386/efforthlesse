@@ -745,6 +745,12 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
     const label=C.id==='method'?'Phần':C.id==='pimsleur'?'Bài':C.id==='pron'?'Unit':'Bài';
     let h=`<div class="pagehead"><div><div class="eyebrow">${esc(C.name)} · ${label} ${B.l+1} / ${C.lessons.length}</div><h3>${esc(L.title)}</h3></div>
       <div class="pager"><button type="button" id="pgPrev" aria-label="Trang trước" ${B.l===0?'disabled':''}>‹</button><button type="button" id="pgNext" aria-label="Trang sau" ${B.l===C.lessons.length-1?'disabled':''}>›</button></div></div>`;
+    if(L.pdf.length){
+      h+=`<div><div class="eyebrow" style="margin-bottom:8px">Trang sách · PDF</div><div class="readings">${L.pdf.map((d,i)=>{const u=fileLink(d[1]);
+        return (LOCAL||EMBED)?`<button class="reading" type="button" data-pdf="${i}" aria-pressed="${i===0}">${esc(d[0])}</button>`
+          :u?`<a class="reading" href="${u}" target="_blank" rel="noopener">${esc(d[0])} ↗</a>`:`<span class="reading" style="opacity:.55">${esc(d[0])}</span>`}).join('')}</div></div>`;
+    }
+    if(C.books&&C.books.length){h+=`<div class="readings">${C.books.map(d=>{const u=fileLink(d[1]);return u?`<a class="reading" href="${u}" target="_blank" rel="noopener">${esc(d[0])} ↗</a>`:''}).join('')}</div>`}
     if(tracks.length){
       h+=`<div class="tracks">${tracks.map((t,i)=>{const u=fileLink(t.p);const kd=t.t==='v'?'Video':kindOf(t.n);
         return (LOCAL||EMBED)?`<button class="track" type="button" data-track="${i}"><span class="pb">${PLAYTRI}</span><span class="nm">${esc(t.n)}</span>${kd?`<span class="kd">${kd}</span>`:'<span></span>'}</button>`
@@ -760,16 +766,12 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
       }
       if(!LOCAL&&!EMBED) h+=`<p class="note">Bấm một bài nghe để mở trong Google Drive và nghe ngay. Trên điện thoại, Drive mở trong trình duyệt hoặc ứng dụng Google Drive.</p>`;
     }
-    if(L.zip&&!tracks.length){const u=fileLink(L.zip);
-      h+=`<p class="note">Trên điện thoại, âm thanh bài này chỉ có trong tệp nén <b>${esc(L.zip.split('/').pop())}</b>. Trên máy tính, mở EfforthlessE.html trong F:\\Effortless English để có nút nghe từng phần. ${u?`<a href="${u}" target="_blank" rel="noopener">Mở tệp nén</a>`:''}</p>`}
     if(L.pdf.length){
-      h+=`<div><div class="eyebrow" style="margin-bottom:8px">Bài đọc</div><div class="readings">${L.pdf.map((d,i)=>{const u=fileLink(d[1]);
-        return (LOCAL||EMBED)?`<button class="reading" type="button" data-pdf="${i}" aria-pressed="${i===0}">${esc(d[0])}</button>`
-          :u?`<a class="reading" href="${u}" target="_blank" rel="noopener">${esc(d[0])} ↗</a>`:`<span class="reading" style="opacity:.55">${esc(d[0])}</span>`}).join('')}</div></div>`;
       if(LOCAL) h+=`<iframe class="pdfview" id="pdfview" title="Bài đọc" src="${localUrl(L.pdf[0][1])}"></iframe>`;
       else if(EMBED) h+=`<iframe class="pdfview" id="pdfview" title="Bài đọc" src="${previewUrl(L.pdf[0][1])||''}"></iframe>`;
     }
-    if(C.books&&C.books.length&&B.l===0){h+=`<div class="readings">${C.books.map(d=>{const u=fileLink(d[1]);return u?`<a class="reading" href="${u}" target="_blank" rel="noopener">${esc(d[0])} ↗</a>`:''}).join('')}</div>`}
+    if(L.zip&&!tracks.length){const u=fileLink(L.zip);
+      h+=`<p class="note">Trên điện thoại, âm thanh bài này chỉ có trong tệp nén <b>${esc(L.zip.split('/').pop())}</b>. Trên máy tính, mở EfforthlessE.html trong F:\\Effortless English để có nút nghe từng phần. ${u?`<a href="${u}" target="_blank" rel="noopener">Mở tệp nén</a>`:''}</p>`}
     pg.insertAdjacentHTML('beforeend',h);
     document.getElementById('pgPrev').onclick=()=>turn(-1);
     document.getElementById('pgNext').onclick=()=>turn(1);
