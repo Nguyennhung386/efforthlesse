@@ -8,7 +8,7 @@
 
 ## Nguồn âm thanh và PDF
 
-Repo này **không chứa** tệp nghe hay PDF của khoá học. Trên web, app phát tệp trực tiếp từ thư mục Google Drive được chia sẻ (`data/ids.json` lưu ID của từng tệp). Nếu mở `index.html` từ thư mục `F:\Effortless English` trên máy tính, app dùng tệp đã tải về.
+Repo này **không chứa** tệp nghe hay PDF của khoá học. Trên web, app phát tệp trực tiếp từ thư mục Google Drive được chia sẻ (`data/ids.json` lưu ID của từng tệp). Nếu mở `index.html` từ thư mục `F:\Effortless English` trên máy tính, app dùng tệp đã tải về. Trên điện thoại, bấm "Chọn thư mục Effortless English trên máy này" để app phát thẳng tệp đã chép vào điện thoại, không cần mạng.
 
 ## Cấu trúc
 

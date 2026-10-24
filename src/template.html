@@ -365,7 +365,9 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
       <div class="sechead" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:end">
         <div><div class="eyebrow">Khoá học · Courses</div><h2 id="bookTitle">Your course library</h2>
         <p>Mỗi khoá là một cuốn sách riêng. Mở một khoá, mỗi trang là một bài: bấm nút nghe theo đúng tên tệp gốc, mở bài đọc PDF, rồi lật sang trang sau.</p></div>
-        <span class="modebadge" id="modeBadge"></span>
+        <div style="display:grid;gap:8px;justify-items:end"><span class="modebadge" id="modeBadge"></span>
+        <label class="say soft" id="pickWrap" for="pickDir" style="cursor:pointer">Chọn thư mục Effortless English trên máy này</label>
+        <input type="file" id="pickDir" webkitdirectory directory multiple hidden></div>
       </div>
       <div class="courses" id="shelf" role="group" aria-label="Chọn khoá"></div>
       <div id="reader" hidden>
@@ -696,6 +698,8 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
   const driveUrl=p=>{const v=IDS[p];if(!v)return null;const [id,q]=v.split('?');return 'https://drive.google.com/file/d/'+id+'/view'+(q?'?'+q:'')};
   const EMBED=!LOCAL&&window.EFF_EMBED===true;
   const previewUrl=p=>{const v=IDS[p];if(!v)return null;const [id,q]=v.split('?');return 'https://drive.google.com/file/d/'+id+'/preview'+(q?'?'+q:'')};
+  const PICK=new Map(), BLOB=new Map();
+  const srcUrl=p=>{if(LOCAL) return localUrl(p); const f=PICK.get(p); if(!f) return null; if(!BLOB.has(p)) BLOB.set(p,URL.createObjectURL(f)); return BLOB.get(p)};
   const folderUrl=IDS['']?'https://drive.google.com/drive/folders/'+IDS['']:null;
   document.getElementById('modeBadge').textContent=LOCAL?'Đang dùng tệp trên máy tính':EMBED?'Phát từ Google Drive':'Đang dùng link Google Drive';
   let B={c:0,l:0,seen:{}};
@@ -730,48 +734,49 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
     document.getElementById('tocsel').innerHTML=C.lessons.map((L,i)=>`<option value="${i}" ${i===B.l?'selected':''}>${no(L,i)} · ${esc(L.title)}</option>`).join('');
     const cur=document.querySelector('#toc [aria-current="true"]'); if(cur) cur.scrollIntoView({block:'nearest'});
   }
-  function fileLink(p){ return LOCAL?localUrl(p):driveUrl(p) }
+  function fileLink(p){ return LOCAL?localUrl(p):(PICK.has(p)?srcUrl(p):driveUrl(p)) }
   function drawPage(){
     const C=LIB[B.c], L=C&&C.lessons[B.l], pg=document.getElementById('page');
     const sel=document.getElementById('tocsel');
     [...pg.children].forEach(ch=>{if(ch!==sel) ch.remove()});
     if(!L){pg.insertAdjacentHTML('beforeend','<p class="note">Chưa có dữ liệu cho mục này.</p>');return}
     B.seen[C.id+':'+B.l]=1; saveB();
-    const tracks=[...L.audio.map(a=>({n:a[0],p:a[1],t:'a'})),...(L.video||[]).map(a=>({n:a[0],p:a[1],t:'v'}))].filter(t=>LOCAL||IDS[t.p]);
+    const NAT=LOCAL||(PICK.size>0&&[...L.audio,...(L.video||[])].some(a=>PICK.has(a[1])));
+    const tracks=[...L.audio.map(a=>({n:a[0],p:a[1],t:'a'})),...(L.video||[]).map(a=>({n:a[0],p:a[1],t:'v'}))].filter(t=>NAT?(LOCAL||PICK.has(t.p)):IDS[t.p]);
     const label=C.id==='method'?'Phần':C.id==='pimsleur'?'Bài':C.id==='pron'?'Unit':'Bài';
     let h=`<div class="pagehead"><div><div class="eyebrow">${esc(C.name)} · ${label} ${B.l+1} / ${C.lessons.length}</div><h3>${esc(L.title)}</h3></div>
       <div class="pager"><button type="button" id="pgPrev" aria-label="Trang trước" ${B.l===0?'disabled':''}>‹</button><button type="button" id="pgNext" aria-label="Trang sau" ${B.l===C.lessons.length-1?'disabled':''}>›</button></div></div>`;
     if(L.pdf.length){
       h+=`<div><div class="eyebrow" style="margin-bottom:8px">Trang sách · PDF</div><div class="readings">${L.pdf.map((d,i)=>{const u=fileLink(d[1]);
-        return (LOCAL||EMBED)?`<button class="reading" type="button" data-pdf="${i}" aria-pressed="${i===0}">${esc(d[0])}</button>`
+        return (NAT||EMBED)?`<button class="reading" type="button" data-pdf="${i}" aria-pressed="${i===0}">${esc(d[0])}</button>`
           :u?`<a class="reading" href="${u}" target="_blank" rel="noopener">${esc(d[0])} ↗</a>`:`<span class="reading" style="opacity:.55">${esc(d[0])}</span>`}).join('')}</div></div>`;
     }
     if(C.books&&C.books.length){h+=`<div class="readings">${C.books.map(d=>{const u=fileLink(d[1]);return u?`<a class="reading" href="${u}" target="_blank" rel="noopener">${esc(d[0])} ↗</a>`:''}).join('')}</div>`}
     if(tracks.length){
       h+=`<div class="tracks">${tracks.map((t,i)=>{const u=fileLink(t.p);const kd=t.t==='v'?'Video':kindOf(t.n);
-        return (LOCAL||EMBED)?`<button class="track" type="button" data-track="${i}"><span class="pb">${PLAYTRI}</span><span class="nm">${esc(t.n)}</span>${kd?`<span class="kd">${kd}</span>`:'<span></span>'}</button>`
+        return (NAT||EMBED)?`<button class="track" type="button" data-track="${i}"><span class="pb">${PLAYTRI}</span><span class="nm">${esc(t.n)}</span>${kd?`<span class="kd">${kd}</span>`:'<span></span>'}</button>`
           :u?`<a class="track" href="${u}" target="_blank" rel="noopener"><span class="pb">${PLAYTRI}</span><span class="nm">${esc(t.n)}</span>${kd?`<span class="kd">${kd}</span>`:'<span></span>'}</a>`
           :`<div class="track" aria-disabled="true" style="opacity:.55"><span class="pb">${PLAYTRI}</span><span class="nm">${esc(t.n)}</span><span class="kd">chưa có link</span></div>`}).join('')}</div>`;
-      if(LOCAL){
+      if(NAT){
       h+=`<div class="player" id="player"><span class="now" id="nowName">Chọn một bài nghe ở trên</span><audio id="aud" controls preload="none"></audio>
         <video id="vid" controls preload="none" style="width:100%;border-radius:12px;display:none"></video>
         <div class="row"><button type="button" id="loopBtn" aria-pressed="${loopOn}">Lặp lại</button>${[0.75,1,1.25].map(r=>`<button type="button" data-spd="${r}" aria-pressed="${r===speedV}">${r}x</button>`).join('')}<button type="button" id="nextTrack">Bài tiếp ›</button></div></div>`;
       }
-      if(EMBED){
+      if(EMBED&&!NAT){
       h+=`<div class="player" id="player"><span class="now" id="nowName">Chọn một bài nghe ở trên</span><iframe id="dplay" title="Trình phát" allow="autoplay" style="width:100%;height:0;border:0;border-radius:12px;background:#fff"></iframe><div class="row"><button type="button" id="nextTrack">Bài tiếp ›</button><a id="openDrive" style="color:#fff;font-size:13.5px" target="_blank" rel="noopener" hidden>Mở trong Drive ↗</a></div></div>`;
       }
-      if(!LOCAL&&!EMBED) h+=`<p class="note">Bấm một bài nghe để mở trong Google Drive và nghe ngay. Trên điện thoại, Drive mở trong trình duyệt hoặc ứng dụng Google Drive.</p>`;
+      if(!NAT&&!EMBED) h+=`<p class="note">Bấm một bài nghe để mở trong Google Drive và nghe ngay. Trên điện thoại, Drive mở trong trình duyệt hoặc ứng dụng Google Drive.</p>`;
     }
     if(L.pdf.length){
-      if(LOCAL) h+=`<iframe class="pdfview" id="pdfview" title="Bài đọc" src="${localUrl(L.pdf[0][1])}"></iframe>`;
-      else if(EMBED) h+=`<iframe class="pdfview" id="pdfview" title="Bài đọc" src="${previewUrl(L.pdf[0][1])||''}"></iframe>`;
+      if(NAT) h+=`<iframe class="pdfview" id="pdfview" title="Bài đọc" src="${srcUrl(L.pdf[0][1])}"></iframe>`;
+      else if(EMBED&&!NAT) h+=`<iframe class="pdfview" id="pdfview" title="Bài đọc" src="${previewUrl(L.pdf[0][1])||''}"></iframe>`;
     }
     if(L.zip&&!tracks.length){const u=fileLink(L.zip);
       h+=`<p class="note">Trên điện thoại, âm thanh bài này chỉ có trong tệp nén <b>${esc(L.zip.split('/').pop())}</b>. Trên máy tính, mở EfforthlessE.html trong F:\\Effortless English để có nút nghe từng phần. ${u?`<a href="${u}" target="_blank" rel="noopener">Mở tệp nén</a>`:''}</p>`}
     pg.insertAdjacentHTML('beforeend',h);
     document.getElementById('pgPrev').onclick=()=>turn(-1);
     document.getElementById('pgNext').onclick=()=>turn(1);
-    if(EMBED){
+    if(EMBED&&!NAT){
       let ti=-1; const fr=document.getElementById('dplay'), od=document.getElementById('openDrive');
       const play=i=>{const t=tracks[i]; if(!t||!fr) return; ti=i; fr.src=previewUrl(t.p); fr.style.height=t.t==='v'?'min(56vw,360px)':'120px';
         document.getElementById('nowName').textContent=t.n; od.href=driveUrl(t.p); od.hidden=false;
@@ -780,12 +785,12 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
       const nt=document.getElementById('nextTrack'); if(nt) nt.onclick=()=>play(ti+1);
       pg.querySelectorAll('[data-pdf]').forEach(b=>b.onclick=()=>{document.getElementById('pdfview').src=previewUrl(L.pdf[+b.dataset.pdf][1]);pg.querySelectorAll('[data-pdf]').forEach(x=>x.setAttribute('aria-pressed',x===b))});
     }
-    if(LOCAL){
+    if(NAT){
       const aud=document.getElementById('aud'), vid=document.getElementById('vid'); let ti=-1;
       const play=i=>{const t=tracks[i]; if(!t) return; ti=i; const el=t.t==='v'?vid:aud, other=t.t==='v'?aud:vid;
         other.pause(); other.style.display=t.t==='v'?'none':''; el.style.display='';
         if(t.t!=='v') vid.style.display='none';
-        el.src=localUrl(t.p); el.loop=loopOn; el.playbackRate=speedV; el.play().catch(()=>{}); audioEl=el;
+        el.src=srcUrl(t.p); el.loop=loopOn; el.playbackRate=speedV; el.play().catch(()=>{}); audioEl=el;
         document.getElementById('nowName').textContent=t.n;
         pg.querySelectorAll('.track').forEach((b,j)=>b.classList.toggle('on',j===i));};
       pg.querySelectorAll('[data-track]').forEach(b=>b.onclick=()=>play(+b.dataset.track));
@@ -793,7 +798,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
         document.getElementById('loopBtn').onclick=e=>{loopOn=!loopOn;e.currentTarget.setAttribute('aria-pressed',loopOn);if(audioEl)audioEl.loop=loopOn};
         pg.querySelectorAll('[data-spd]').forEach(b=>b.onclick=()=>{speedV=+b.dataset.spd;pg.querySelectorAll('[data-spd]').forEach(x=>x.setAttribute('aria-pressed',x===b));if(audioEl)audioEl.playbackRate=speedV});
         document.getElementById('nextTrack').onclick=()=>play(ti+1);}
-      pg.querySelectorAll('[data-pdf]').forEach(b=>b.onclick=()=>{document.getElementById('pdfview').src=localUrl(L.pdf[+b.dataset.pdf][1]);pg.querySelectorAll('[data-pdf]').forEach(x=>x.setAttribute('aria-pressed',x===b))});
+      pg.querySelectorAll('[data-pdf]').forEach(b=>b.onclick=()=>{document.getElementById('pdfview').src=srcUrl(L.pdf[+b.dataset.pdf][1]);pg.querySelectorAll('[data-pdf]').forEach(x=>x.setAttribute('aria-pressed',x===b))});
     }
   }
   function turn(d){
@@ -812,6 +817,18 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
   pgEl.addEventListener('touchend',e=>{if(tx===null)return;const dx=e.changedTouches[0].clientX-tx;tx=null;if(Math.abs(dx)>70)turn(dx<0?1:-1)});
   addEventListener('keydown',e=>{if(e.target.closest('input,select,textarea'))return;const r=document.getElementById('book').getBoundingClientRect();if(r.top>innerHeight||r.bottom<0||document.getElementById('reader').hidden)return;if(e.key==='ArrowRight')turn(1);if(e.key==='ArrowLeft')turn(-1)});
   if(B.c>=LIB.length) B={c:0,l:0,seen:{}};
+  if(LOCAL) document.getElementById('pickWrap').hidden=true;
+  document.getElementById('pickDir').addEventListener('change',e=>{
+    const files=[...e.target.files]; if(!files.length) return;
+    const all=new Set(); LIB.forEach(c=>{c.lessons.forEach(L=>{[...L.audio,...(L.video||[]),...L.pdf].forEach(x=>all.add(x[1]))});(c.books||[]).forEach(x=>all.add(x[1]))});
+    const byName=new Map(); all.forEach(p=>{const n=p.split('/').pop(); byName.set(n, byName.has(n)?null:p)});
+    PICK.clear(); BLOB.forEach(u=>URL.revokeObjectURL(u)); BLOB.clear();
+    files.forEach(f=>{const rel=(f.webkitRelativePath||f.name).split('/'); const tries=[rel.slice(1).join('/'),rel.join('/')];
+      let hit=tries.find(t=>all.has(t)); if(!hit){const q=byName.get(f.name); if(q) hit=q}
+      if(hit) PICK.set(hit,f)});
+    document.getElementById('modeBadge').textContent=PICK.size?'Đang dùng '+PICK.size+' tệp trên máy này':'Không tìm thấy tệp nào khớp, hãy chọn đúng thư mục Effortless English';
+    if(B.open){drawToc();drawPage()}
+  });
   drawShelf(); if(B.open) openCourse(B.c,true);
 
   /* Courses */
