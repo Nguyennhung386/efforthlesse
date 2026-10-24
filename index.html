@@ -238,6 +238,10 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 .bub.hide .en{filter:blur(6px)}
 .hidevi .bub .vi{display:none}
 .turn{min-height:24px;font-weight:500;color:var(--leaf-deep)}
+.srcbox{background:#f4f8f1;border-radius:18px;padding:16px 18px;margin-bottom:22px;display:grid;gap:8px}
+.srcbox b{font:900 19px/1.2 var(--display);color:var(--leaf-deep)}
+.srcbox p{margin:0;font-size:14.5px;line-height:1.5;color:#4a6450}
+.srcbox .reading{background:var(--leaf);color:#fff}
 .readerhead{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
 .readerhead h3{margin:6px 0 0;font:900 clamp(24px,3vw,34px)/1.05 var(--display);color:var(--leaf-deep)}
 .course .cnt{font-size:13px;color:#6b8270}
@@ -420,6 +424,9 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
     <section class="block sec" id="pron" aria-labelledby="pronTitle">
       <div class="sechead"><div class="eyebrow">(6) Pronunciation · Luyện phát âm</div><h2 id="pronTitle">Sounds that Vietnamese speakers mix up</h2>
         <p>Bấm từng từ để nghe sự khác nhau, đọc mẹo đặt miệng, rồi kiểm tra tai của bạn bằng trò "Bạn nghe thấy từ nào?". Nghe ở tốc độ chậm trước, sau đó nói to theo.</p></div>
+      <div class="srcbox"><b>Tài liệu gốc của bạn</b><p>Nghe 20 unit Pronunciation (2018) và xem 16 video Pronunciation Workshop, mỗi bài là một trang.</p>
+        <div class="readings"><button class="reading" type="button" data-opencourse="pron">Mở Pronunciation (2018) ›</button><button class="reading" type="button" data-opencourse="workshop">Mở Pronunciation Workshop (video) ›</button></div></div>
+      <h3 class="subh" style="margin-top:0">Cặp âm dễ nhầm</h3>
       <div class="pairs" id="pairs"></div>
       <h3 class="subh">Bạn nghe thấy từ nào?</h3>
       <div class="game" id="earGame"></div>
@@ -434,6 +441,9 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
     <section class="block sec" id="talk" aria-labelledby="talkTitle">
       <div class="sechead"><div class="eyebrow">Giao tiếp · Everyday speaking</div><h2 id="talkTitle">Real conversations</h2>
         <p>Nghe cả đoạn hội thoại, rồi chọn vai để luyện nói. App đọc lời của người kia, đến lượt bạn thì câu của bạn bị làm mờ: tự nói to, bấm "Gợi ý" nếu quên, rồi bấm "Tiếp".</p></div>
+      <div class="srcbox"><b>Tài liệu gốc của bạn</b><p>51 bài Pimsleur English (30 bài nghe, 21 bài đọc) kèm 2 cuốn sách PDF, dành cho người mới bắt đầu giao tiếp.</p>
+        <div class="readings"><button class="reading" type="button" data-opencourse="pimsleur">Mở Pimsleur English ›</button></div></div>
+      <h3 class="subh" style="margin-top:0">Hội thoại nhập vai</h3>
       <div class="topics" id="topics" role="group" aria-label="Choose a topic"></div>
       <div class="controls" style="margin:0 0 16px">
         <button class="say" type="button" id="dlgPlay">Nghe cả đoạn</button>
@@ -808,6 +818,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
   }
   document.getElementById('shelf').addEventListener('click',e=>{const b=e.target.closest('[data-shelf]');if(!b)return;openCourse(+b.dataset.shelf);document.getElementById('book').scrollIntoView({behavior:'smooth',block:'start'})});
   document.getElementById('backShelf').onclick=closeCourse;
+  document.addEventListener('click',e=>{const b=e.target.closest('[data-opencourse]');if(!b)return;const i=LIB.findIndex(c=>c.id===b.dataset.opencourse);if(i<0)return;openCourse(i);document.getElementById('book').scrollIntoView({behavior:'smooth',block:'start'})});
   document.getElementById('toc').addEventListener('click',e=>{const b=e.target.closest('[data-toc]');if(!b)return;if(audioEl)audioEl.pause();B.l=+b.dataset.toc;saveB();drawToc();drawPage()});
   document.getElementById('tocsel').onchange=e=>{if(audioEl)audioEl.pause();B.l=+e.target.value;saveB();drawToc();drawPage()};
   let tx=null; const pgEl=document.getElementById('page');
