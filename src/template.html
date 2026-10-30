@@ -51,7 +51,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 .abs{position:absolute}
 .logo{left:calc(31*var(--u));top:calc(23*var(--u));display:flex;align-items:center;gap:calc(8*var(--u));font:900 calc(29.5*var(--u))/1 var(--display);color:#fff;text-decoration:none}
 .logo svg{width:calc(30*var(--u));height:calc(30*var(--u))}
-.navpill{left:calc(443*var(--u));top:calc(13*var(--u));width:calc(546*var(--u));height:calc(50*var(--u));border-radius:calc(25*var(--u));background:var(--sage-pill);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:flex;align-items:center;gap:calc(54*var(--u));padding-left:calc(49*var(--u))}
+.navpill{left:calc(420*var(--u));top:calc(13*var(--u));width:calc(660*var(--u));height:calc(50*var(--u));border-radius:calc(25*var(--u));background:var(--sage-pill);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:flex;align-items:center;gap:calc(36*var(--u));padding-left:calc(38*var(--u))}
 .navpill a{color:#fff;text-decoration:none;font:500 calc(19.5*var(--u))/1 var(--body);white-space:nowrap;transition:opacity .2s}
 .navpill a:hover{opacity:.8}
 .langsw{left:calc(1112*var(--u));top:calc(17*var(--u));height:calc(40*var(--u));display:flex;gap:calc(2*var(--u));padding:calc(3*var(--u));border-radius:999px;background:var(--sage-pill);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
@@ -282,6 +282,61 @@ html[data-lang="en"] .bub .vi,html[data-lang="en"] .ans em,html[data-lang="en"] 
 @media (max-width:820px){.book{grid-template-columns:1fr}.toc{display:none}.tocsel{display:block}.pdfview{height:70vh}}
 @media (max-width:820px){.courses,.pairs{grid-template-columns:1fr}.game{grid-template-columns:1fr}.bub{max-width:94%}}
 
+
+.shcard{border:2px solid #e4eedb;border-radius:20px;padding:clamp(16px,2.4vw,26px);display:grid;gap:14px}
+.shtop{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.shen{margin:0;font:600 clamp(22px,2.6vw,30px)/1.5 var(--body);color:var(--leaf-ink);transition:filter .3s}
+.shen .w{font:inherit;color:inherit;padding:0 1px;border-radius:6px;border-bottom:2px dotted transparent;cursor:pointer}
+.shen .w:hover,.shen .w:focus-visible{background:#fdeeb9}
+.shen .w.saved{border-bottom-color:var(--sun)}
+.shen.hide{filter:blur(10px)}
+.shvi{margin:-6px 0 0;font-size:16px;line-height:1.5;color:#5c7461}
+[data-lang="en"] .shvi{display:none}
+.shlist{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:6px}
+.shlist button{width:100%;text-align:left;padding:10px 14px;border-radius:12px;background:#f4f8f1;display:grid;grid-template-columns:30px minmax(0,1fr);gap:8px;font-size:15px;line-height:1.45;color:var(--leaf-ink)}
+.shlist button[aria-current="true"]{background:#fdeeb9}
+.shlist .no{font:600 13px/1.7 var(--body);color:#6b8270;font-variant-numeric:tabular-nums}
+.shlist small{display:block;color:#5c7461;font-size:13.5px}
+.opts{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.opts .lb{font-size:13px;color:#6b8270;margin-right:2px}
+.mini{padding:8px 12px;border-radius:999px;background:var(--meadow-2);color:var(--leaf-deep);font:500 14px/1 var(--body)}
+.mini[aria-pressed="true"]{background:var(--leaf);color:#fff}
+.say:disabled{opacity:.45;cursor:default}
+.say.rec{background:var(--tomato)}
+.say.rec.on{animation:recpulse 1s infinite}
+@keyframes recpulse{50%{opacity:.6}}
+.look{border-radius:18px;background:#fffaf0;border:2px solid #f6e3b4;padding:16px;display:grid;gap:10px}
+.look .lw{font:900 26px/1.1 var(--display);color:var(--leaf-deep)}
+.vbhead{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.vcount{font:500 14px/1 var(--body);color:#6b8270;margin-left:6px}
+.vbhead input,.vbadd input,.vviin{flex:1 1 200px;min-width:0;padding:10px 14px;border-radius:999px;border:2px solid #dfeccf;font:inherit;font-size:16px;background:#fff;color:inherit}
+.vbadd{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.vblist{display:grid;gap:12px}
+.vb{border:2px solid #e4eedb;border-radius:18px;padding:14px 16px;display:grid;gap:8px}
+.vbtop{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.vbtop b{font:900 24px/1.1 var(--display);color:var(--leaf-deep)}
+.pos{font-size:13px;font-style:italic;color:#6b8270;padding:3px 10px;border-radius:999px;background:#f1f7ec}
+.star{font-size:24px;line-height:1;color:#c9d6c0;padding:2px}
+.star[aria-pressed="true"]{color:var(--sun)}
+.del{margin-left:auto;width:34px;height:34px;border-radius:50%;background:#fbe4dd;color:var(--tomato);font-size:20px;line-height:1}
+.ipa{display:flex;gap:6px 16px;flex-wrap:wrap;align-items:center;font-size:15.5px;color:#4a6450}
+.ipa>span{display:inline-flex;align-items:center;gap:6px}
+.ipa .acc{font:600 11px/1 var(--body);letter-spacing:.04em;color:#fff;background:var(--sky-deep);border-radius:6px;padding:4px 5px}
+.ipa .acc.uk{background:#c25a6b}
+.spk{width:30px;height:30px;border-radius:50%;background:#e6f0fa;color:#24568f;display:grid;place-items:center}
+.spk svg{width:15px;height:15px}
+.defs{margin:0;padding-left:22px;display:grid;gap:6px;font-size:15px;line-height:1.5}
+.defs i{display:block;color:#5c7461}
+.vvi{margin:0;font-weight:600;color:var(--leaf-deep)}
+.vviin{flex:none;width:100%;border-radius:12px}
+.vdate{font-size:12.5px;color:#7a8f7e}
+#shadowing audio{width:100%}
+.shsel{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.shsel select{padding:10px 12px;border-radius:12px;border:2px solid #dfeccf;background:#fff;font:inherit;font-size:15px;color:inherit;min-width:0}
+#shadowing .turn{margin:0;min-height:0}#shadowing .turn:empty,#shLook:empty{display:none}
+@media (max-width:700px){.shsel{grid-template-columns:1fr}#shadowing .topics{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-left:-4px;margin-right:-4px;padding:0 4px 4px}#shadowing .topics .chip{flex:none}#shadowing .topics::-webkit-scrollbar{display:none}}
+.jumpbar{display:none}
+@media (max-width:820px){.jumpbar{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:18px}.jumpbar a{background:rgba(255,255,255,.92);color:var(--leaf-deep);text-decoration:none;font:600 14px/1 var(--body);padding:10px 14px;border-radius:999px}}
 /* ---------- PHONES ---------- */
 @media (max-width:820px){
   .hero{height:auto;padding-bottom:28px}
@@ -345,6 +400,7 @@ html[data-lang="en"] .bub .vi,html[data-lang="en"] .ans em,html[data-lang="en"] 
         <a href="#book" data-jump="book"><span class="t" data-en="Courses" data-vi="Khoá học" data-inline="1">Courses</span></a>
         <a href="#pron" data-jump="pron"><span class="t" data-en="Sounds" data-vi="Phát âm" data-inline="1">Sounds</span></a>
         <a href="#talk" data-jump="talk"><span class="t" data-en="Speaking" data-vi="Giao tiếp" data-inline="1">Speaking</span></a>
+        <a href="#shadowing" data-jump="shadowing"><span class="t" data-en="Shadowing" data-vi="Nói đuổi" data-inline="1">Shadowing</span></a>
         <a href="#room" data-go="garden"><span class="t" data-en="My Garden" data-vi="Vườn của tôi" data-inline="1">My Garden</span></a>
       </nav>
       <div class="langsw abs anim-drop" role="group" aria-label="Language / Ngôn ngữ"><button type="button" data-lang="en">EN</button><button type="button" data-lang="vi">VI</button><button type="button" data-lang="both">EN+VI</button></div>
@@ -357,6 +413,7 @@ html[data-lang="en"] .bub .vi,html[data-lang="en"] .ans em,html[data-lang="en"] 
       <p class="sub anim-rise"><span class="t" data-en="Learn English the effortless way, out in the meadow." data-vi="Học tiếng Anh nhẹ nhàng như dạo giữa đồng cỏ." data-both="vi">Learn English the effortless way, out in the meadow.</span> <span class="t" data-en="Every lesson is a tiny story and a listen-and-tap game." data-vi="Mỗi bài là một câu chuyện nhỏ và một trò nghe chọn hình." data-both="vi">Every lesson is a tiny story and a listen-and-tap game.</span> <span class="t" data-en="Six courses, plus sounds and real conversations." data-vi="Sáu khoá học, cùng phát âm và hội thoại thực tế." data-both="vi">Six courses, plus sounds and real conversations.</span></p>
       <div class="ctas">
         <a class="pill white cta1 abs anim-rise" href="#book" data-jump="book"><span class="t" data-en="Open book" data-vi="Mở sách" data-inline="1">Open book</span></a>
+        <nav class="jumpbar" aria-label="Sections"><a href="#book" data-jump="book"><span class="t" data-en="Courses" data-vi="Khoá học" data-both="vi">Courses</span></a><a href="#pron" data-jump="pron"><span class="t" data-en="Sounds" data-vi="Phát âm" data-both="vi">Sounds</span></a><a href="#shadowing" data-jump="shadowing">Shadowing</a><a href="#talk" data-jump="talk"><span class="t" data-en="Speaking" data-vi="Giao tiếp" data-both="vi">Speaking</span></a></nav>
         <button class="pill mint cta2 abs anim-rise" type="button" id="heroListen">
           <svg class="tri" viewBox="0 0 18 20" aria-hidden="true"><path d="M3 2.6c0-1.5 1.6-2.4 2.9-1.6l10.3 6.4c1.2.8 1.2 2.6 0 3.4L5.9 17.2C4.6 18 3 17.1 3 15.6Z" fill="#fff"/></svg>
           <span class="t" data-en="Listen first" data-vi="Nghe thử" data-inline="1">Listen first</span>
@@ -435,8 +492,15 @@ html[data-lang="en"] .bub .vi,html[data-lang="en"] .ans em,html[data-lang="en"] 
       <p class="tip"><span class="t" data-en="The red syllable is stressed: say it louder, longer and higher." data-vi="Âm tiết màu đỏ được nhấn mạnh: đọc to hơn, dài hơn và cao giọng hơn.">The red syllable is stressed: say it louder, longer and higher.</span></p>
       <div class="stress" id="stress"></div>
       <h3 class="subh"><span class="t" data-en="Shadowing" data-vi="Nói đuổi" data-inline="1">Shadowing</span></h3>
-      <p class="tip"><span class="t" data-en="Listen slowly, then at normal speed, then speak along with the voice. Watch the linked sounds (underlined)." data-vi="Nghe chậm, rồi nghe tốc độ thường, rồi nói cùng lúc với giọng đọc. Chú ý chỗ nối âm (gạch dưới).">Listen slowly, then at normal speed, then speak along with the voice. Watch the linked sounds (underlined).</span></p>
-      <div class="shadow" id="shadow"></div>
+      <div class="readings"><button class="reading" type="button" data-jump="shadowing"><span class="t" data-en="Practise sentence by sentence in Shadowing ›" data-vi="Luyện từng câu trong phần Shadowing ›" data-inline="1">Practise sentence by sentence in Shadowing ›</span></button></div>
+    </section>
+
+
+    <section class="block sec" id="shadowing" aria-labelledby="shTitle">
+      <div class="sechead"><div class="eyebrow">Shadowing</div><h2 id="shTitle"><span class="t" data-en="Listen, then speak right after the voice" data-vi="Nghe rồi nói đuổi theo giọng bản xứ">Listen, then speak right after the voice</span></h2>
+        <p><span class="t" data-en="Listen to one sentence, say it out loud with the same rhythm, then record yourself and compare. Tap any word to look it up and save it to My Vocabulary." data-vi="Nghe một câu, nói to theo đúng nhịp và ngữ điệu, rồi ghi âm giọng mình để so sánh. Bấm vào từ bất kỳ để tra nghĩa và lưu vào Sổ từ vựng.">Listen to one sentence, say it out loud with the same rhythm, then record yourself and compare. Tap any word to look it up and save it to My Vocabulary.</span></p></div>
+      <div class="topics" id="shModes" role="tablist" aria-label="Shadowing"></div>
+      <div id="shBody"></div>
     </section>
 
     <section class="block sec" id="talk" aria-labelledby="talkTitle">
@@ -527,7 +591,6 @@ html[data-lang="en"] .bub .vi,html[data-lang="en"] .ans em,html[data-lang="en"] 
     ['Âm cuối /s/',['cat','một con mèo'],['cats','nhiều con mèo'],'Người Việt hay nuốt âm cuối. Hãy đọc rõ tiếng "xì" nhẹ ở cuối từ số nhiều.']
   ];
   const STRESS=[['ba','NA','na','banana','quả chuối'],['PHO','to','graph','photograph','bức ảnh'],['pho','TO','gra','phy','photography','nhiếp ảnh'],['com','PU','ter','computer','máy tính'],['VEG','e','ta','ble','vegetable','rau củ'],['im','POR','tant','important','quan trọng']];
-  const SHADOW=[['Nice to meet you.','Nice <u>to meet</u> you.'],['What do you want to do?','What <u>do you</u> <u>want to</u> do?'],['Can I have a glass of water?','<u>Can I</u> have <u>a glass of</u> water?'],['I\'m going to look it up.','I\'m <u>going to</u> <u>look it up</u>.']];
   const TOPICS=[
     {t:'Greetings',vi:'Chào hỏi',l:[['A','Hi! I\'m Nhung. Nice to meet you.','Chào bạn! Mình là Nhung. Rất vui được gặp bạn.'],['B','Nice to meet you too. I\'m David.','Mình cũng rất vui được gặp bạn. Mình là David.'],['A','Where are you from, David?','Bạn đến từ đâu vậy David?'],['B','I\'m from Canada. And you?','Mình đến từ Canada. Còn bạn?'],['A','I\'m from Vietnam. I live in Hanoi.','Mình đến từ Việt Nam. Mình sống ở Hà Nội.'],['B','Cool! I\'d love to visit Hanoi someday.','Tuyệt quá! Mình rất muốn đến Hà Nội một ngày nào đó.']]},
     {t:'At a café',vi:'Ở quán cà phê',l:[['A','Hi, what can I get for you?','Chào bạn, bạn muốn dùng gì?'],['B','Can I have an iced coffee, please?','Cho mình một ly cà phê đá nhé.'],['A','Sure. Any size?','Được ạ. Bạn lấy cỡ nào?'],['B','A large one, please.','Cho mình cỡ lớn.'],['A','For here or to go?','Uống tại đây hay mang đi ạ?'],['B','To go, thanks.','Mang đi, cảm ơn bạn.']]},
@@ -848,7 +911,7 @@ html[data-lang="en"] .bub .vi,html[data-lang="en"] .ans em,html[data-lang="en"] 
     files.forEach(f=>{const rel=(f.webkitRelativePath||f.name).split('/'); const tries=[rel.slice(1).join('/'),rel.join('/')];
       let hit=tries.find(t=>all.has(t)); if(!hit){const q=byName.get(f.name); if(q) hit=q}
       if(hit) PICK.set(hit,f)});
-    if(PICK.size) setBadge(); else document.getElementById('modeBadge').textContent=T('No matching files. Choose the Effortless English folder.','Không tìm thấy tệp nào khớp, hãy chọn đúng thư mục Effortless English');
+    if(PICK.size){ setBadge(); if(SH.m==='audio') drawBody() } else document.getElementById('modeBadge').textContent=T('No matching files. Choose the Effortless English folder.','Không tìm thấy tệp nào khớp, hãy chọn đúng thư mục Effortless English');
     if(B.open){drawToc();drawPage()}
   });
   function applyLang(){
@@ -894,11 +957,364 @@ html[data-lang="en"] .bub .vi,html[data-lang="en"] .ans em,html[data-lang="en"] 
   document.getElementById('stress').innerHTML=STRESS.map(s=>{const vi=s[s.length-1],w=s[s.length-2],syl=s.slice(0,-2);
     return `<button type="button" data-word="${w}"><span class="syl">${syl.map(x=>x===x.toUpperCase()?'<strong>'+x+'</strong>':x).join('·')}</span><small>${w} · ${esc(vi)}</small></button>`}).join('');
   document.getElementById('stress').addEventListener('click',e=>{const b=e.target.closest('[data-word]');if(b){stop();speak(b.dataset.word,null,SLOW)}});
+  /* Shadowing */
+  const PASS=[
+    {t:'A Morning Walk',vi:'Buổi đi dạo sáng',s:[
+      ['Every morning, I take a short walk around my neighborhood.','Mỗi sáng, tôi đi dạo một vòng ngắn quanh khu phố.'],
+      ['The air is cool and the streets are still quiet.','Không khí mát mẻ và đường phố vẫn còn yên tĩnh.'],
+      ['I usually stop at a small café on the corner.','Tôi thường dừng lại ở một quán cà phê nhỏ ở góc phố.'],
+      ['The owner already knows my order: a black coffee, no sugar.','Chủ quán đã biết tôi gọi gì: một ly cà phê đen, không đường.'],
+      ['While I drink it, I watch people hurry to work.','Trong lúc uống, tôi ngắm mọi người vội vã đi làm.'],
+      ['This simple habit helps me feel calm and ready for the day.','Thói quen đơn giản này giúp tôi thấy bình tĩnh và sẵn sàng cho một ngày mới.']]},
+    {t:'Ordering Food',vi:'Gọi món',s:[
+      ['Hi, could I see the menu, please?','Chào anh, cho tôi xem thực đơn được không?'],
+      ['What would you recommend for someone who loves spicy food?','Anh gợi ý món gì cho người thích ăn cay?'],
+      ["I'll have the chicken curry and a glass of iced tea.",'Tôi lấy cà ri gà và một ly trà đá.'],
+      ['Could you make it a little less spicy?','Anh làm bớt cay một chút được không?'],
+      ["Excuse me, I think there's a mistake on the bill.",'Xin lỗi, hình như hoá đơn bị nhầm.'],
+      ['Everything was delicious. Thank you so much!','Mọi thứ đều rất ngon. Cảm ơn anh nhiều!']]},
+    {t:'Learning English',vi:'Học tiếng Anh',s:[
+      ["For years, I studied grammar rules, but I still couldn't speak.",'Nhiều năm tôi học quy tắc ngữ pháp mà vẫn không nói được.'],
+      ['Then I decided to change the way I learn.','Rồi tôi quyết định thay đổi cách học.'],
+      ['Now I listen to easy English for an hour every day.','Giờ tôi nghe tiếng Anh dễ hiểu một tiếng mỗi ngày.'],
+      ['I repeat the same lessons again and again until they feel natural.','Tôi nghe đi nghe lại cùng những bài học cho đến khi thấy tự nhiên.'],
+      ["I don't worry about mistakes anymore.",'Tôi không còn lo về lỗi sai nữa.'],
+      ['Little by little, the words come out of my mouth automatically.','Dần dần, từ ngữ tự bật ra khỏi miệng tôi.']]},
+    {t:'At Work',vi:'Ở nơi làm việc',s:[
+      ['Our team has a meeting every Monday at nine o\'clock.','Nhóm chúng tôi họp mỗi thứ Hai lúc chín giờ.'],
+      ['We talk about what we finished last week and what comes next.','Chúng tôi nói về việc đã xong tuần trước và việc tiếp theo.'],
+      ['Sometimes a project runs late, and we have to solve the problem together.','Đôi khi dự án bị trễ và chúng tôi phải cùng nhau giải quyết vấn đề.'],
+      ['My manager always asks, "How can I help?"','Quản lý của tôi luôn hỏi: "Tôi giúp được gì?"'],
+      ["I think that's why everyone enjoys working here.",'Tôi nghĩ đó là lý do mọi người đều thích làm việc ở đây.']]},
+    {t:'A Weekend Trip',vi:'Chuyến đi cuối tuần',s:[
+      ['Last weekend, my friends and I drove to the beach.','Cuối tuần trước, tôi và bạn bè lái xe ra biển.'],
+      ['We left early to avoid the traffic.','Chúng tôi đi sớm để tránh kẹt xe.'],
+      ['The water was warm, so we swam until the sun went down.','Nước ấm nên chúng tôi bơi đến khi mặt trời lặn.'],
+      ['At night, we ate fresh seafood and told funny stories.','Buổi tối, chúng tôi ăn hải sản tươi và kể chuyện vui.'],
+      ['I was exhausted when I got home, but it was worth it.','Về đến nhà tôi mệt rã rời, nhưng rất đáng.']]},
+    {t:'Making Plans',vi:'Hẹn gặp',s:[
+      ['Are you free this Saturday afternoon?','Chiều thứ Bảy này bạn rảnh không?'],
+      ['I was thinking we could go to the movies.','Mình đang nghĩ tụi mình có thể đi xem phim.'],
+      ['Sounds great! What time works for you?','Nghe hay đó! Mấy giờ thì tiện cho bạn?'],
+      ['How about we meet in front of the theater at three?','Hay mình gặp trước rạp lúc ba giờ nhé?'],
+      ['Sorry, something came up. Can we make it four instead?','Xin lỗi, có việc đột xuất. Mình đổi sang bốn giờ được không?'],
+      ['No problem. See you then!','Không sao. Gặp bạn lúc đó nhé!']]}
+  ];
+  /* word: [part of speech, BrE IPA, NAmE IPA, Vietnamese, [[definition, example]]] */
+  const DICT={
+    neighborhood:['noun','ˈneɪbəhʊd','ˈneɪbərhʊd','khu phố; hàng xóm láng giềng',[['the area around the place where you live','It\'s a quiet neighborhood with lots of trees.'],['the people who live in an area','The whole neighborhood came to the party.']]],
+    quiet:['adjective','ˈkwaɪət','ˈkwaɪət','yên tĩnh, im lặng',[['making very little noise','The streets are quiet early in the morning.'],['without many people or much activity','It was a quiet day at the office.']]],
+    habit:['noun','ˈhæbɪt','ˈhæbɪt','thói quen',[['something you do often and regularly, often without thinking','Reading before bed is a good habit.']]],
+    calm:['adjective','kɑːm','kɑːm','bình tĩnh; yên ả',[['not excited, nervous or upset','Try to stay calm and speak slowly.'],['peaceful and quiet','The sea was calm this morning.']]],
+    hurry:['verb','ˈhʌri','ˈhɜːri','vội vàng, gấp gáp',[['to do something or go somewhere quickly','We hurried to catch the bus.']]],
+    owner:['noun','ˈəʊnə(r)','ˈoʊnər','chủ, người sở hữu',[['a person who owns something','The owner of the café is very friendly.']]],
+    order:['noun','ˈɔːdə(r)','ˈɔːrdər','món đã gọi; thứ tự',[['food or drink that you ask for in a restaurant or café','The waiter took our order.'],['the way things are arranged, one after another','Put the words in the right order.']]],
+    ready:['adjective','ˈredi','ˈredi','sẵn sàng',[['prepared to do something','Are you ready to start?']]],
+    recommend:['verb','ˌrekəˈmend','ˌrekəˈmend','gợi ý, giới thiệu',[['to tell someone that something is good or suitable','Can you recommend a good restaurant?'],['to advise someone to do something','I recommend listening every day.']]],
+    spicy:['adjective','ˈspaɪsi','ˈspaɪsi','cay',[['having a strong, hot flavour from spices','I love spicy noodles.']]],
+    mistake:['noun','mɪˈsteɪk','mɪˈsteɪk','lỗi, sai lầm',[['something that is not correct','Everyone makes mistakes when they learn.'],['an action or opinion that is wrong','Leaving early was a mistake.']]],
+    bill:['noun','bɪl','bɪl','hoá đơn',[['a piece of paper that shows how much you have to pay','Could we have the bill, please?']]],
+    delicious:['adjective','dɪˈlɪʃəs','dɪˈlɪʃəs','ngon',[['having a very pleasant taste or smell','This soup is delicious.']]],
+    menu:['noun','ˈmenjuː','ˈmenjuː','thực đơn',[['a list of the food you can order in a restaurant','The waiter brought us the menu.']]],
+    grammar:['noun','ˈɡræmə(r)','ˈɡræmər','ngữ pháp',[['the rules for putting words together into sentences','Don\'t study grammar first; listen first.']]],
+    decide:['verb','dɪˈsaɪd','dɪˈsaɪd','quyết định',[['to choose what to do after thinking about it','She decided to learn English.']]],
+    change:['verb','tʃeɪndʒ','tʃeɪndʒ','thay đổi',[['to become different, or to make something different','I want to change my study habits.']]],
+    repeat:['verb','rɪˈpiːt','rɪˈpiːt','lặp lại',[['to say or do something again','Please repeat after me.']]],
+    natural:['adjective','ˈnætʃrəl','ˈnætʃrəl','tự nhiên',[['normal, easy and not forced','Her English sounds very natural.']]],
+    worry:['verb','ˈwʌri','ˈwɜːri','lo lắng',[['to keep thinking about problems or bad things that might happen','Don\'t worry about small mistakes.']]],
+    automatically:['adverb','ˌɔːtəˈmætɪkli','ˌɔːt̬əˈmæt̬ɪkli','một cách tự động',[['without thinking about it','After a while, you answer automatically.']]],
+    meeting:['noun','ˈmiːtɪŋ','ˈmiːt̬ɪŋ','cuộc họp',[['an occasion when people come together to talk about something','We have a meeting at nine.']]],
+    project:['noun','ˈprɒdʒekt','ˈprɑːdʒekt','dự án',[['a piece of planned work that needs time and effort','The new project starts next month.']]],
+    solve:['verb','sɒlv','sɑːlv','giải quyết',[['to find an answer to a problem','We solved the problem together.']]],
+    problem:['noun','ˈprɒbləm','ˈprɑːbləm','vấn đề',[['something that is difficult to deal with','There\'s a problem with my phone.']]],
+    manager:['noun','ˈmænɪdʒə(r)','ˈmænɪdʒər','quản lý',[['a person who is in charge of a team or business','My manager is very kind.']]],
+    enjoy:['verb','ɪnˈdʒɔɪ','ɪnˈdʒɔɪ','thích, tận hưởng',[['to get pleasure from something','I enjoy listening to stories.']]],
+    together:['adverb','təˈɡeðə(r)','təˈɡeðər','cùng nhau',[['with each other','Let\'s practise together.']]],
+    avoid:['verb','əˈvɔɪd','əˈvɔɪd','tránh',[['to stay away from someone or something','We left early to avoid the rain.']]],
+    traffic:['noun','ˈtræfɪk','ˈtræfɪk','giao thông, xe cộ',[['the cars and other vehicles on a road','The traffic was terrible this morning.']]],
+    seafood:['noun','ˈsiːfuːd','ˈsiːfuːd','hải sản',[['fish and other sea animals that you can eat','This town is famous for its seafood.']]],
+    exhausted:['adjective','ɪɡˈzɔːstɪd','ɪɡˈzɔːstɪd','kiệt sức, mệt rã rời',[['very, very tired','I was exhausted after the trip.']]],
+    worth:['adjective','wɜːθ','wɜːrθ','đáng (bỏ công, bỏ tiền)',[['good or useful enough to do, even if it is difficult','The film is worth seeing.']]],
+    free:['adjective','friː','friː','rảnh; miễn phí',[['not busy; with no plans','Are you free tonight?'],['costing no money','The lessons are free.']]],
+    theater:['noun','ˈθɪətə(r)','ˈθiːət̬ər','rạp hát, rạp chiếu phim',[['a building where you go to see plays or (in American English) films','Let\'s meet outside the theater.']]],
+    instead:['adverb','ɪnˈsted','ɪnˈsted','thay vào đó',[['in the place of someone or something','Let\'s have tea instead of coffee.']]],
+    afternoon:['noun','ˌɑːftəˈnuːn','ˌæftərˈnuːn','buổi chiều',[['the part of the day from midday until about six o\'clock','See you on Saturday afternoon.']]],
+    usually:['adverb','ˈjuːʒuəli','ˈjuːʒuəli','thường thường',[['in the way that happens most often','I usually get up at six.']]]
+  };
+  let SH={m:'sent',p:0,i:0,rep:1,spd:.85,acc:'us',hide:false,auto:false,c:0,l:0,t:0,chunk:0,crep:1,aspd:1};
+  try{Object.assign(SH,JSON.parse(localStorage.getItem('mb-shadow')||'{}'))}catch(e){}
+  const saveSH=()=>{try{localStorage.setItem('mb-shadow',JSON.stringify(SH))}catch(e){}};
+  let VOC=[]; try{VOC=JSON.parse(localStorage.getItem('mb-vocab')||'[]')||[]}catch(e){}
+  const saveV=()=>{try{localStorage.setItem('mb-vocab',JSON.stringify(VOC))}catch(e){}};
+  const norm=w=>w.toLowerCase().replace(/’/g,"'").replace(/'s$/,'').replace(/^'+|'+$/g,'');
+  const hasV=w=>VOC.some(v=>v.w===w);
+  const slash=x=>x?'/'+x.replace(/^\/|\/$/g,'')+'/':'';
+  const shRoot=document.getElementById('shadowing');
+  let shTok=0, LOOK=null, VQ='', VSTAR=false, VSORT='new', lastDel=null;
+  const shStatus=m=>{const s=document.getElementById('shStatus'); if(s) s.textContent=m};
+  function vSpeak(text,acc,r,onend){
+    if(!synth){ if(onend) setTimeout(onend,300); return }
+    const lg=acc==='uk'?'en-GB':'en-US', vs=synth.getVoices().filter(x=>x.lang.replace('_','-')===lg);
+    const u=new SpeechSynthesisUtterance(text); u.lang=lg; u.rate=r||.9;
+    const v=vs.find(x=>/google|natural|online|samantha|daniel|serena|jenny|aria|libby|sonia/i.test(x.name))||vs[0]||(acc==='uk'?null:voice); if(v) u.voice=v;
+    if(onend) u.onend=onend; synth.speak(u);
+  }
+  function sayWord(e,acc){ stop(); const url=e[acc+'A'];
+    if(url){ const a=new Audio(url); a.play().catch(()=>vSpeak(e.w,acc,.8)) } else vSpeak(e.w,acc,.8) }
+
+  /* dictionary: built-in words first, then dictionaryapi.dev when online */
+  const LCACHE={};
+  function stems(w){const a=[w], r=(re,s)=>{if(re.test(w)){const x=w.replace(re,s); if(x.length>2&&!a.includes(x)) a.push(x)}};
+    r(/ies$/,'y');r(/ied$/,'y');r(/([a-z])\1(ing|ed)$/,'$1');r(/ing$/,'');r(/ing$/,'e');r(/ed$/,'');r(/ed$/,'e');r(/es$/,'');r(/s$/,'');r(/ly$/,'');return a}
+  async function lookup(raw){
+    const w=norm(raw); if(LCACHE[w]) return LCACHE[w];
+    for(const s of stems(w)) if(DICT[s]){const d=DICT[s]; return LCACHE[w]={w:s,pos:d[0],uk:d[1],us:d[2],vi:d[3],defs:d[4].map(x=>({d:x[0],ex:x[1]}))}}
+    try{
+      for(const s of stems(w)){
+        const ctl=new AbortController(), tm=setTimeout(()=>ctl.abort(),7000);
+        const r=await fetch('https://api.dictionaryapi.dev/api/v2/entries/en/'+encodeURIComponent(s),{signal:ctl.signal}); clearTimeout(tm);
+        if(!r.ok) continue;
+        const j=await r.json(), ph=j.flatMap(x=>x.phonetics||[]), ms=j.flatMap(x=>x.meanings||[]);
+        const acc=k=>ph.find(p=>p.text&&p.audio&&new RegExp('-'+k+'\\.mp3$').test(p.audio)), any=ph.find(p=>p.text)||{};
+        const uk=acc('uk'), us=acc('us'), defs=[];
+        ms.forEach(m=>(m.definitions||[]).forEach(d=>{if(defs.length<4) defs.push({d:d.definition,ex:d.example||''})}));
+        return LCACHE[w]={w:j[0].word||s,pos:[...new Set(ms.map(m=>m.partOfSpeech))].slice(0,2).join(', '),
+          uk:(uk||any).text||j[0].phonetic||'',us:(us||any).text||j[0].phonetic||'',ukA:uk?uk.audio:'',usA:us?us.audio:'',vi:'',defs};
+      }
+    }catch(e){}
+    return {w,pos:'',uk:'',us:'',vi:'',defs:[],off:true};
+  }
+  function addV(e,src){
+    if(hasV(e.w)) return;
+    const defs=e.defs.length?e.defs:(src?[{d:'',ex:src}]:[]);
+    VOC.unshift({w:e.w,pos:e.pos,uk:e.uk,us:e.us,ukA:e.ukA||'',usA:e.usA||'',vi:e.vi||'',defs,star:false,date:new Date().toISOString(),src:src||''});
+    saveV();
+  }
+  const SPK=(act,arg)=>`<button class="spk" type="button" data-act="${act}" data-arg="${esc(arg)}" aria-label="${T('Pronounce','Phát âm')}">${ICON}</button>`;
+  function ipaRow(e,act,key){
+    return `<div class="ipa">${['uk','us'].map(a=>`<span><span class="acc ${a}">${a==='uk'?'BrE':'NAmE'}</span>${esc(slash(e[a]))}${SPK(act,key+'|'+a)}</span>`).join('')}</div>`;
+  }
+  function lookHtml(){
+    if(!LOOK) return '';
+    if(LOOK.busy) return `<div class="look"><b class="lw">${esc(LOOK.raw)}</b><p class="tip" style="margin:0">${T('Looking up…','Đang tra từ…')}</p></div>`;
+    const e=LOOK.e, saved=hasV(e.w);
+    return `<div class="look" role="region" aria-label="${T('Dictionary','Từ điển')}"><div class="vbtop"><b class="lw">${esc(e.w)}</b>${e.pos?`<span class="pos">${esc(e.pos)}</span>`:''}<button class="del" type="button" data-act="lookx" aria-label="${T('Close','Đóng')}">×</button></div>
+      ${ipaRow(e,'lsay','')}
+      ${e.vi&&LANG!=='en'?`<p class="vvi">${esc(e.vi)}</p>`:''}
+      ${e.defs.length?`<ol class="defs">${e.defs.map(d=>`<li>${esc(d.d)}${d.ex?`<i>${esc(d.ex)}</i>`:''}</li>`).join('')}</ol>`:`<p class="tip" style="margin:0">${T('No definition found offline. Save it anyway and add your own meaning in My Vocabulary.','Chưa tìm được nghĩa khi không có mạng. Bạn vẫn lưu được và tự thêm nghĩa trong Sổ từ vựng.')}</p>`}
+      <div class="controls" style="margin:0"><button class="say" type="button" data-act="lsave" ${saved?'disabled':''}>${saved?T('Saved ✓','Đã lưu ✓'):T('Save to My Vocabulary','Lưu vào Sổ từ vựng')}</button></div></div>`;
+  }
+  async function openLook(raw,src){
+    LOOK={raw,src,busy:true}; drawLook();
+    const e=await lookup(raw); if(!LOOK||LOOK.raw!==raw) return;
+    LOOK={raw,src,e}; drawLook();
+  }
+  function drawLook(){const b=document.getElementById('shLook'); if(b) b.innerHTML=lookHtml()}
+
+  /* record yourself */
+  let rec=null, recURL='', recPlay=null;
+  function recBar(){
+    const on=rec&&rec.state==='recording';
+    return `<div class="controls" style="margin:0"><button class="say rec ${on?'on':''}" type="button" data-act="rec">● ${on?T('Stop','Dừng'):T('Record me','Ghi âm giọng tôi')}</button><button class="say soft" type="button" data-act="mine" ${recURL?'':'disabled'}>${ICON} ${T('Play my voice','Nghe giọng tôi')}</button></div>`;
+  }
+  function drawRec(){const b=document.getElementById('shRecBar'); if(b) b.innerHTML=recBar()}
+  async function toggleRec(){
+    if(rec&&rec.state==='recording'){ rec.stop(); return }
+    try{
+      const s=await navigator.mediaDevices.getUserMedia({audio:true}), parts=[];
+      rec=new MediaRecorder(s);
+      rec.ondataavailable=e=>{if(e.data.size) parts.push(e.data)};
+      rec.onstop=()=>{ s.getTracks().forEach(t=>t.stop()); if(recURL) URL.revokeObjectURL(recURL);
+        recURL=URL.createObjectURL(new Blob(parts,{type:rec.mimeType||'audio/webm'})); drawRec();
+        shStatus(T('Recorded. Play the model, then your voice, and compare.','Đã ghi xong. Nghe mẫu rồi nghe giọng bạn để so sánh.')) };
+      rec.start(); drawRec(); shStatus(T('Recording… say it, then press Stop.','Đang ghi âm… nói câu đó rồi bấm Dừng.'));
+    }catch(e){ rec=null; drawRec(); shStatus(T('Recording is not available here. Open the app in Chrome or Safari (GitHub link) and allow the microphone.','Không ghi âm được ở đây. Hãy mở app bằng Chrome hoặc Safari (link GitHub) và cho phép dùng micro.')) }
+  }
+  function clearRec(){ if(rec&&rec.state==='recording') rec.stop(); if(recURL) URL.revokeObjectURL(recURL); recURL='' }
+
+  /* sentence by sentence */
+  function sentWords(s){
+    return s.split(/([A-Za-z][A-Za-z'’]*)/).map((m,i)=>{ if(i%2===0) return esc(m); const w=norm(m);
+      return `<button class="w ${hasV(w)||stems(w).some(hasV)?'saved':''}" type="button" data-w="${m}">${m}</button>` }).join('');
+  }
+  function sentHtml(){
+    const P=PASS[SH.p], S=P.s[SH.i];
+    const opt=(act,v,cur,lab)=>`<button class="mini" type="button" data-act="${act}" data-arg="${v}" aria-pressed="${v==cur}">${lab}</button>`;
+    return `<div class="topics" role="group" aria-label="${T('Choose a passage','Chọn bài')}">${PASS.map((p,i)=>`<button class="chip" type="button" data-act="pass" data-arg="${i}" aria-pressed="${i===SH.p}">${esc(T(p.t,p.vi))}</button>`).join('')}</div>
+    <div class="shcard">
+      <div class="shtop"><span class="eyebrow">${T('Sentence','Câu')} ${SH.i+1} / ${P.s.length}</span>
+        <span class="opts"><span class="lb">${T('Accent','Giọng')}</span>${opt('acc','us',SH.acc,'US')}${opt('acc','uk',SH.acc,'UK')}</span></div>
+      <p class="shen ${SH.hide?'hide':''}" id="shEn">${sentWords(S[0])}</p>
+      <p class="shvi">${esc(S[1])}</p>
+      <div class="controls" style="margin:0">
+        <button class="say soft" type="button" data-act="prev" ${SH.i===0?'disabled':''} aria-label="${T('Previous sentence','Câu trước')}">‹</button>
+        <button class="say" type="button" data-act="play">${ICON} ${T('Listen & repeat','Nghe & nói theo')}</button>
+        <button class="say soft" type="button" data-act="halt">${T('Stop','Dừng')}</button>
+        <button class="say soft" type="button" data-act="next" ${SH.i===P.s.length-1?'disabled':''} aria-label="${T('Next sentence','Câu sau')}">›</button>
+      </div>
+      <div class="opts"><span class="lb">${T('Speed','Tốc độ')}</span>${[.6,.85,1].map(v=>opt('spd',v,SH.spd,v===.6?T('Slow','Chậm'):v===1?T('Natural','Tự nhiên'):T('Medium','Vừa'))).join('')}
+        <span class="lb" style="margin-left:10px">${T('Repeat','Lặp')}</span>${[1,3,5].map(v=>opt('rep',v,SH.rep,'×'+v)).join('')}
+        <button class="mini" type="button" data-act="auto" aria-pressed="${SH.auto}" style="margin-left:10px">${T('Auto-play all','Tự chạy cả bài')}</button>
+        <button class="mini" type="button" data-act="hide" aria-pressed="${SH.hide}">${T('Hide text','Ẩn chữ')}</button></div>
+      <div id="shRecBar">${recBar()}</div>
+      <p class="turn" id="shStatus" aria-live="polite"></p>
+      <div id="shLook">${lookHtml()}</div>
+    </div>
+    <ol class="shlist">${P.s.map((s,i)=>`<li><button type="button" data-act="sent" data-arg="${i}" aria-current="${i===SH.i}"><span class="no">${String(i+1).padStart(2,'0')}</span><span>${esc(s[0])}${LANG!=='en'?`<small>${esc(s[1])}</small>`:''}</span></button></li>`).join('')}</ol>`;
+  }
+  function gapFor(s,r){ return Math.round(s.split(/\s+/).length*380/r)+900 }
+  function playSent(){
+    const tok=++shTok; stop(); let left=SH.rep;
+    const go=()=>{ if(tok!==shTok) return; const s=PASS[SH.p].s[SH.i][0];
+      shStatus(T('Listen…','Nghe…'));
+      vSpeak(s,SH.acc,SH.spd,()=>{ if(tok!==shTok) return; left--;
+        shStatus(T('Your turn: say it out loud, same rhythm','Đến lượt bạn: nói to theo, giữ đúng nhịp'));
+        setTimeout(()=>{ if(tok!==shTok) return;
+          if(left>0) go();
+          else if(SH.auto&&SH.i<PASS[SH.p].s.length-1){ SH.i++; saveSH(); clearRec(); drawBody(); left=SH.rep; go() }
+          else shStatus(SH.auto?T('Finished the passage. Great work!','Xong cả bài rồi, giỏi lắm!'):T('Now record yourself and compare.','Giờ hãy ghi âm giọng mình và so sánh.')) },gapFor(s,SH.spd)) }) };
+    go();
+  }
+  function halt(){ shTok++; stop(); const a=document.getElementById('shAud'); if(a) a.pause(); ck=null }
+
+  /* original lesson audio */
+  let ck=null, AB={a:null,b:null};
+  const shAvail=p=>LOCAL||!!BASE||PICK.has(p);
+  const fmt=t=>t==null?'–':Math.floor(t/60)+':'+String(Math.floor(t%60)).padStart(2,'0');
+  function audHtml(){
+    const cs=LIB.map((c,i)=>({c,i})).filter(x=>x.c.lessons.some(l=>l.audio.length));
+    if(!cs.length) return `<p class="note">${T('No lesson audio in the library.','Thư viện chưa có bài nghe.')}</p>`;
+    if(!cs.some(x=>x.i===SH.c)) SH.c=cs[0].i;
+    const C=LIB[SH.c], ls=C.lessons.map((L,i)=>({L,i})).filter(x=>x.L.audio.length);
+    if(!ls.some(x=>x.i===SH.l)) SH.l=ls[0].i;
+    const L=C.lessons[SH.l]; if(SH.t>=L.audio.length) SH.t=0;
+    const tr=L.audio[SH.t], ok=shAvail(tr[1]);
+    const opt=(act,v,cur,lab)=>`<button class="mini" type="button" data-act="${act}" data-arg="${v}" aria-pressed="${v==cur}">${lab}</button>`;
+    return `<p class="tip">${T('Shadow the real Effortless English audio. Turn on “Pause every …” and the player stops after each short part so you can repeat it, then carries on.','Nhại theo đúng audio Effortless English. Bật "Dừng sau mỗi …" thì máy sẽ tự dừng sau từng đoạn ngắn để bạn nói lại, rồi phát tiếp.')}</p>
+    <div class="shsel">
+      <select data-act="selc" aria-label="${T('Course','Khoá học')}">${cs.map(x=>`<option value="${x.i}" ${x.i===SH.c?'selected':''}>${esc(cname(x.c))}</option>`).join('')}</select>
+      <select data-act="sell" aria-label="${T('Lesson','Bài')}">${ls.map(x=>`<option value="${x.i}" ${x.i===SH.l?'selected':''}>${esc(x.L.title)}</option>`).join('')}</select>
+      <select data-act="selt" aria-label="${T('Track','Bài nghe')}">${L.audio.map((a,i)=>`<option value="${i}" ${i===SH.t?'selected':''}>${esc(a[0])}</option>`).join('')}</select>
+    </div>
+    <div class="shcard" style="margin-top:12px">
+      ${ok?`<audio id="shAud" controls preload="metadata" src="${srcUrl(tr[1])}"></audio>`:`<p class="note" style="margin:0">${T('This file is not on this device yet. Choose the Effortless English folder to shadow the original audio.','Tệp này chưa có trên máy. Hãy chọn thư mục Effortless English để nhại theo audio gốc.')} <label for="pickDir" style="text-decoration:underline;cursor:pointer;font-weight:600">${T('Choose folder','Chọn thư mục')}</label></p>`}
+      <div class="controls" style="margin:0">
+        <button class="say soft" type="button" data-act="back3">↺ 3s</button>
+        <button class="say soft" type="button" data-act="seta" id="abA">A ${fmt(AB.a)}</button>
+        <button class="say soft" type="button" data-act="setb" id="abB">B ${fmt(AB.b)}</button>
+        <button class="say soft" type="button" data-act="clrab" id="abX" ${AB.a==null&&AB.b==null?'disabled':''}>${T('Clear A–B','Bỏ A–B')}</button>
+      </div>
+      <div class="opts"><span class="lb">${T('Pause every','Dừng sau mỗi')}</span>${[0,3,5,8].map(v=>opt('chunk',v,SH.chunk,v?v+'s':T('Off','Tắt'))).join('')}
+        <span class="lb" style="margin-left:10px">${T('Repeat part','Lặp đoạn')}</span>${[1,2,3].map(v=>opt('crep',v,SH.crep,'×'+v)).join('')}
+        <span class="lb" style="margin-left:10px">${T('Speed','Tốc độ')}</span>${[.75,.9,1].map(v=>opt('aspd',v,SH.aspd,v+'x')).join('')}</div>
+      <div id="shRecBar">${recBar()}</div>
+      <p class="turn" id="shStatus" aria-live="polite"></p>
+    </div>`;
+  }
+  function updAB(){ const g=id=>document.getElementById(id); if(!g('abA')) return;
+    g('abA').textContent='A '+fmt(AB.a); g('abB').textContent='B '+fmt(AB.b); g('abX').disabled=AB.a==null&&AB.b==null;
+    shStatus(AB.a!=null&&AB.b!=null?T('Looping A–B. Speak along with it.','Đang lặp đoạn A–B. Nói theo cùng lúc nhé.'):'') }
+  function wireAud(){
+    const a=document.getElementById('shAud'); if(!a) return;
+    a.playbackRate=SH.aspd;
+    a.onplay=()=>{ stop(); if(ck&&ck.wait){ shTok++; ck.wait=false; if(ck.left<=0) ck=null } };
+    a.ontimeupdate=()=>{
+      if(AB.a!=null&&AB.b!=null&&a.currentTime>=AB.b){ a.currentTime=AB.a; return }
+      if(!SH.chunk||a.paused) return;
+      if(!ck) ck={s:a.currentTime,e:a.currentTime+SH.chunk,left:SH.crep};
+      if(!ck.wait&&a.currentTime>=ck.e){
+        ck.wait=true; ck.left--; a.pause();
+        shStatus(T('Your turn: repeat that part out loud','Đến lượt bạn: nói lại đoạn vừa nghe'));
+        const t=++shTok, wait=SH.chunk*1150/SH.aspd+500;
+        setTimeout(()=>{ if(t!==shTok||!ck) return; ck.wait=false;
+          if(ck.left>0) a.currentTime=ck.s; else ck={s:ck.e,e:ck.e+SH.chunk,left:SH.crep};
+          shStatus(T('Listen…','Nghe…')); a.play() },wait);
+      }
+    };
+    a.onseeked=()=>{ if(ck&&!ck.wait&&(a.currentTime<ck.s-.4||a.currentTime>ck.e+.4)) ck=null };
+    a.onended=()=>{ ck=null; shStatus(T('End of track.','Hết bài nghe.')) };
+  }
+
+  /* My Vocabulary */
+  function vocabHtml(){
+    const q=VQ.trim().toLowerCase();
+    let list=VOC.filter(v=>(!VSTAR||v.star)&&(!q||(v.w+' '+v.vi+' '+v.defs.map(d=>d.d).join(' ')).toLowerCase().includes(q)));
+    if(VSORT==='az') list=[...list].sort((a,b)=>a.w.localeCompare(b.w));
+    const dt=d=>{try{return new Date(d).toLocaleDateString(LANG==='en'?'en-GB':'vi-VN',{day:'numeric',month:'short',year:'numeric'})}catch(e){return ''}};
+    return `<div class="vbhead"><h3 class="subh" style="margin:0">${T('My Vocabulary','Sổ từ vựng')} <small class="vcount">${VOC.length} ${T('words','từ')}</small></h3></div>
+    <form class="vbadd" data-act="addform"><input id="vbNew" type="text" autocomplete="off" autocapitalize="off" placeholder="${T('Add a word…','Thêm từ mới…')}" aria-label="${T('Add a word','Thêm từ mới')}"><button class="say" type="submit">${T('Look up','Tra từ')}</button></form>
+    <div id="shLook">${lookHtml()}</div>
+    <div class="vbhead"><input id="vbQ" type="search" value="${esc(VQ)}" placeholder="${T('Search my words…','Tìm trong sổ…')}" aria-label="${T('Search','Tìm kiếm')}">
+      <button class="mini" type="button" data-act="vstar" aria-pressed="${VSTAR}">★ ${T('Starred','Đánh dấu')}</button>
+      <button class="mini" type="button" data-act="vsort" aria-pressed="${VSORT==='az'}">A–Z</button></div>
+    ${lastDel?`<p class="tip">${T('Deleted','Đã xoá')} “${esc(lastDel.v.w)}”. <button type="button" data-act="undo" style="text-decoration:underline;font-weight:600;color:var(--leaf)">${T('Undo','Hoàn tác')}</button></p>`:''}
+    ${VOC.length?'':`<p class="note">${T('Your notebook is empty. Tap any word in a shadowing sentence, or type a word above, then press “Save”.','Sổ còn trống. Bấm vào một từ bất kỳ trong câu shadowing, hoặc gõ từ ở ô phía trên, rồi bấm "Lưu".')}</p>`}
+    ${VOC.length&&!list.length?`<p class="tip">${T('No words match.','Không có từ nào khớp.')}</p>`:''}
+    <div class="vblist">${list.map(v=>`<article class="vb">
+      <div class="vbtop"><button class="star" type="button" data-act="star" data-arg="${esc(v.w)}" aria-pressed="${!!v.star}" aria-label="${T('Star','Đánh dấu')}">★</button><b>${esc(v.w)}</b>${v.pos?`<span class="pos">${esc(v.pos)}</span>`:''}
+        <button class="del" type="button" data-act="del" data-arg="${esc(v.w)}" aria-label="${T('Delete','Xoá')} ${esc(v.w)}">×</button></div>
+      ${ipaRow(v,'vsay',v.w)}
+      ${LANG!=='en'?(v.vi?`<p class="vvi">${esc(v.vi)}</p>`:`<input class="vviin" type="text" data-vi="${esc(v.w)}" placeholder="${T('Add the meaning…','Thêm nghĩa tiếng Việt…')}" aria-label="${T('Meaning','Nghĩa')}">`):''}
+      ${v.defs.length?`<ol class="defs">${v.defs.map(d=>`<li>${d.d?esc(d.d):''}${d.ex?`<i>${esc(d.ex)}</i>`:''}</li>`).join('')}</ol>`:''}
+      <span class="vdate">${T('Saved','Đã lưu')} ${dt(v.date)}</span></article>`).join('')}</div>`;
+  }
+
+  function drawBody(){
+    const b=document.getElementById('shBody'); if(!b) return;
+    b.innerHTML=SH.m==='audio'?audHtml():SH.m==='vocab'?vocabHtml():sentHtml();
+    if(SH.m==='audio') wireAud();
+  }
   function drawShadow(){
-  document.getElementById('shadow').innerHTML=SHADOW.map((s,i)=>`<div class="qline"><p>${s[1]}</p><span class="controls" style="margin:0"><button class="say soft" type="button" data-sh="${i}" data-r=".6">${ICON} ${T('Slow','Chậm')}</button><button class="say" type="button" data-sh="${i}" data-r="1">${ICON} ${T('Normal','Thường')}</button></span></div>`).join('');
+    document.getElementById('shModes').innerHTML=[['sent',T('Sentence by sentence','Từng câu')],['audio',T('Lesson audio','Audio bài học')],['vocab',T('My Vocabulary','Sổ từ vựng')+' · '+VOC.length]]
+      .map(m=>`<button class="chip" type="button" role="tab" data-act="mode" data-arg="${m[0]}" aria-selected="${SH.m===m[0]}" aria-pressed="${SH.m===m[0]}">${m[1]}</button>`).join('');
+    drawBody();
   }
   drawShadow();
-  document.getElementById('shadow').addEventListener('click',e=>{const b=e.target.closest('[data-sh]');if(b){stop();speak(SHADOW[+b.dataset.sh][0],null,{rate:+b.dataset.r})}});
+  shRoot.addEventListener('submit',e=>{ e.preventDefault(); const i=document.getElementById('vbNew'); const w=i&&i.value.trim(); if(w) openLook(w.split(/\s+/)[0],'') });
+  shRoot.addEventListener('input',e=>{ if(e.target.id==='vbQ'){ VQ=e.target.value; const pos=e.target.selectionStart; drawBody(); const q=document.getElementById('vbQ'); q.focus(); try{q.setSelectionRange(pos,pos)}catch(x){} } });
+  shRoot.addEventListener('change',e=>{
+    const t=e.target;
+    if(t.dataset.vi!=null){ const v=VOC.find(x=>x.w===t.dataset.vi); if(v&&t.value.trim()){ v.vi=t.value.trim(); saveV(); drawBody() } return }
+    const act=t.dataset.act; if(!act) return; halt(); ck=null; AB={a:null,b:null};
+    if(act==='selc'){SH.c=+t.value;SH.l=0;SH.t=0} if(act==='sell'){SH.l=+t.value;SH.t=0} if(act==='selt') SH.t=+t.value;
+    saveSH(); drawBody();
+  });
+  shRoot.addEventListener('click',e=>{
+    const w=e.target.closest('[data-w]'); if(w){ openLook(w.dataset.w,PASS[SH.p].s[SH.i][0]); return }
+    const b=e.target.closest('[data-act]'); if(!b||b.tagName==='SELECT'||b.tagName==='FORM') return;
+    const act=b.dataset.act, arg=b.dataset.arg, a=document.getElementById('shAud');
+    switch(act){
+      case 'mode': halt(); clearRec(); LOOK=null; lastDel=null; SH.m=arg; saveSH(); drawShadow(); break;
+      case 'pass': halt(); clearRec(); LOOK=null; SH.p=+arg; SH.i=0; saveSH(); drawBody(); break;
+      case 'sent': halt(); clearRec(); LOOK=null; SH.i=+arg; saveSH(); drawBody(); playSent(); break;
+      case 'prev': case 'next': halt(); clearRec(); LOOK=null; SH.i+=act==='next'?1:-1; saveSH(); drawBody(); playSent(); break;
+      case 'play': playSent(); break;
+      case 'halt': halt(); shStatus(''); break;
+      case 'spd': SH.spd=+arg; saveSH(); drawBody(); break;
+      case 'rep': SH.rep=+arg; saveSH(); drawBody(); break;
+      case 'acc': SH.acc=arg; saveSH(); drawBody(); break;
+      case 'auto': SH.auto=!SH.auto; saveSH(); drawBody(); break;
+      case 'hide': SH.hide=!SH.hide; saveSH(); document.getElementById('shEn').classList.toggle('hide',SH.hide); b.setAttribute('aria-pressed',SH.hide); break;
+      case 'rec': halt(); toggleRec(); break;
+      case 'mine': if(recURL){ halt(); if(recPlay) recPlay.pause(); recPlay=new Audio(recURL); recPlay.play().catch(()=>{}) } break;
+      case 'lookx': LOOK=null; drawLook(); break;
+      case 'lsave': if(LOOK&&LOOK.e){ addV(LOOK.e,LOOK.src); if(SH.m==='vocab') drawShadow(); else { drawLook(); document.querySelectorAll('#shEn .w').forEach(x=>{const n=norm(x.dataset.w); if(hasV(n)||stems(n).some(hasV)) x.classList.add('saved')}); document.querySelector('#shModes [data-arg="vocab"]').textContent=T('My Vocabulary','Sổ từ vựng')+' · '+VOC.length } } break;
+      case 'lsay': if(LOOK&&LOOK.e) sayWord(LOOK.e,arg.split('|')[1]); break;
+      case 'vsay': { const [k,ac]=arg.split('|'), v=VOC.find(x=>x.w===k); if(v) sayWord(v,ac); break }
+      case 'star': { const v=VOC.find(x=>x.w===arg); if(v){ v.star=!v.star; saveV(); b.setAttribute('aria-pressed',v.star) } break }
+      case 'del': { const i=VOC.findIndex(x=>x.w===arg); if(i>-1){ lastDel={v:VOC[i],i}; VOC.splice(i,1); saveV(); drawShadow() } break }
+      case 'undo': if(lastDel){ VOC.splice(Math.min(lastDel.i,VOC.length),0,lastDel.v); lastDel=null; saveV(); drawShadow() } break;
+      case 'vstar': VSTAR=!VSTAR; drawBody(); break;
+      case 'vsort': VSORT=VSORT==='az'?'new':'az'; drawBody(); break;
+      case 'back3': if(a){ a.currentTime=Math.max(0,a.currentTime-3); ck=null } break;
+      case 'seta': if(a){ AB.a=a.currentTime; if(AB.b!=null&&AB.b<=AB.a) AB.b=null; updAB() } break;
+      case 'setb': if(a&&AB.a!=null&&a.currentTime>AB.a){ AB.b=a.currentTime; a.currentTime=AB.a; ck=null; updAB() } else shStatus(T('Press A first, keep listening, then press B.','Bấm A trước, nghe tiếp rồi bấm B.')); break;
+      case 'clrab': AB={a:null,b:null}; updAB(); break;
+      case 'chunk': SH.chunk=+arg; ck=null; saveSH(); b.parentNode.querySelectorAll('[data-act="chunk"]').forEach(x=>x.setAttribute('aria-pressed',x===b)); break;
+      case 'crep': SH.crep=+arg; saveSH(); b.parentNode.querySelectorAll('[data-act="crep"]').forEach(x=>x.setAttribute('aria-pressed',x===b)); break;
+      case 'aspd': SH.aspd=+arg; saveSH(); if(a) a.playbackRate=SH.aspd; b.parentNode.querySelectorAll('[data-act="aspd"]').forEach(x=>x.setAttribute('aria-pressed',x===b)); break;
+    }
+  });
 
   /* Speaking */
   let topic=0, role=null, step=0;
